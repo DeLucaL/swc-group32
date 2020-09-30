@@ -1,1 +1,1 @@
-![image info](./uml.png)
+![image info](./Task_1_architecture.png)
