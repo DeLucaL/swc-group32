@@ -1,5 +1,5 @@
 ## Software Construction - Assignment 1 <br /> 
-##### by Loris DeLuca, Samuele Walzer and Stefanie Krohmann<br /> 
+##### by Loris De Luca, Samuele Walzer and Stefanie Krohmann<br /> 
 
 Part 1 <br /> 
 a) blablabla
