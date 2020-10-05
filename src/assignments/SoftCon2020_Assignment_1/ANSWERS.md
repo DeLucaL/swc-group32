@@ -12,16 +12,14 @@ b)<br />
 
 Part 2
 
-*if/else* statements:
-
+*if/else* statements:<br />
 ![org.joda.example.time.TimeZoneTable.ZoneData#compareTo](./Images/df_compareTo().jpg)
 
 ![org.joda.example.time.DateTimeBrowser#getDefaultTableView](./Images/df_getDefaultTableView().jpg)
 
 ![org.joda.time.tz.ZoneInfoCompiler.Rule#formatName](./Images/df_formatName().jpg)
 
-*for* loops:
-
+*for* loops:<br />
 ![org.joda.example.time.DateTimePerformance#checkJodaConstructor1](./Images/df_checkJodaConstructor1().jpg)
 
 ![org.joda.time.tz.ZoneInfoCompiler#writeZoneInfoMap](./Images/df_writeZoneInfoMap.jpg)
