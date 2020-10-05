@@ -10,7 +10,14 @@ To draw the architecture of the system we took the class "age calculator" as our
 b)<br />
 ![image_info](./Images/Task_1b_callgraph.jpg)
 
-c)<br />
-![image_info](./Images/df_addToBuilder().jpg)<br />
-![image_info](./Images/df_compareTo().jpg)<br />
-![image_info](./Images/df_formatName().jpg)<br />
+Part 2
+
+*if/else* statements:<br />
+
+![image_info](./Images/df_addToBuilder().jpg)
+
+![image_info](./Images/df_compareTo().jpg)
+
+![image_info](./Images/df_formatName().jpg)
+
+*for* loops:
