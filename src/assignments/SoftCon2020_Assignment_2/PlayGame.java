@@ -17,7 +17,7 @@ public class PlayGame {
             String input = scanner.nextLine();
             //input format
             if (!isValidInput(input)) {
-                System.out.println("The specified input is invalid");
+                System.out.println("1 The specified input is invalid");
                 continue;
             }
 
@@ -38,16 +38,12 @@ public class PlayGame {
             int row = computeBowRow(start, end);
 
             if (computeLength(start, end, horizontal) != ship.getSize()) {
-                System.out.println("The specified input is invalid");
+                System.out.println("2 The specified input is invalid");
                 continue;
             }
 
-            ship.setBowRow(row);
-            ship.setBowColumn(column);
-            ship.setHorizontal(horizontal);
-
             if (!ship.isPlaceableAt(row, column, horizontal, b)) {
-                System.out.println("The specified input is invalid");
+                System.out.println("3 The specified input is invalid");
                 continue;
             }
 
@@ -98,8 +94,8 @@ public class PlayGame {
     static int computeLength(String a, String b, boolean horizontal){
         char[] A = a.toCharArray();
         char[] B = b.toCharArray();
-        if (horizontal) return (int) A[0] - (int) B[0] + 1;
-        else return (int) A[1] - (int) B[1] + 1;
+        if (horizontal) return Math.abs((int) A[0] - (int) B[0]) + 1;
+        else return Math.abs((int) A[1] - (int) B[1]) + 1;
     }
 
     static int computeBowColumn(String a, String b) {
@@ -114,7 +110,7 @@ public class PlayGame {
         char[] A = a.toCharArray();
         char[] B = b.toCharArray();
 
-        if (A[1] < B[1]) return A[1];
-        else return B[1];
+        if (A[1] < B[1]) return A[1] - 48;
+        else return B[1] - 48;
     }
 }

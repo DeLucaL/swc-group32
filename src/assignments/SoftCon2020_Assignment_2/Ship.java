@@ -12,30 +12,30 @@ abstract class Ship {
 
     //Getters
 
-    public int getBowRow() {
+    private int getBowRow() {
         return bowRow;
     }
 
-    public int getBowColumn() {
+    private int getBowColumn() {
         return bowColumn;
     }
 
-    public boolean isHorizontal() {
+    private boolean isHorizontal() {
         return horizontal;
     }
 
 
     //Setters
 
-    public void setBowRow(int bowRow) {
+    private void setBowRow(int bowRow) {
         this.bowRow = bowRow;
     }
 
-    public void setBowColumn(int bowColumn) {
+    private void setBowColumn(int bowColumn) {
         this.bowColumn = bowColumn;
     }
 
-    public void setHorizontal(boolean horizontal) {
+    private void setHorizontal(boolean horizontal) {
         this.horizontal = horizontal;
     }
 
@@ -57,7 +57,20 @@ abstract class Ship {
     }
 
     public void placeAt(int row, int col, boolean horizontal, GameBoard board) {
+        setHorizontal(horizontal);
+        setBowRow(row);
+        setBowColumn(col);
 
+        if (horizontal) {
+            for (int i = 0; i < this.getSize(); i++) {
+                board.board[row][col + i] = this;
+            }
+        }
+        else {
+            for (int i = 0; i < this.getSize(); i++) {
+                board.board[row + i][col] = this;
+            }
+        }
     }
 }
 

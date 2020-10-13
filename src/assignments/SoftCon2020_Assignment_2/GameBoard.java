@@ -1,5 +1,7 @@
 package assignments.SoftCon2020_Assignment_2;
 
+import java.util.Arrays;
+
 public class GameBoard {
     Ship[][] board = new Ship[10][10];
 
@@ -11,8 +13,9 @@ public class GameBoard {
         }
     }
 
+    //TODO edit display to match specification
     void display() {
-        System.out.println(this);
+        System.out.println(Arrays.deepToString(board));
     }
 
     boolean isOccupied(int row, int col) {
