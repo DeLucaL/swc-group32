@@ -3,7 +3,7 @@ package assignments.SoftCon2020_Assignment_2;
 import java.util.Scanner;
 
 public class PlayGame {
-    public void main(String[] args){
+    public static void main(String[] args){
         System.out.println("Welcome to Battleship!\n");
 
         GameBoard b = new GameBoard();
@@ -35,7 +35,7 @@ public class PlayGame {
         b.display();
     }
 
-    boolean isValid(String s){
+    static boolean isValid(String s){
         if (s.length() != 5) return false;
         char[] a = s.toCharArray();
 
@@ -43,7 +43,7 @@ public class PlayGame {
                 & isValidLetter(a[3]) & isValidDigit(a[4]);
     }
 
-    boolean isValidLetter(char c){
+    static boolean isValidLetter(char c){
         char[] validLetters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
         for (char l : validLetters) {
             if (l == c) return true;
@@ -51,7 +51,7 @@ public class PlayGame {
         return false;
     }
 
-    boolean isValidDigit(char c){
+    static boolean isValidDigit(char c){
         char[] validDigits = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
         for (char d : validDigits) {
             if (d == c) return true;
