@@ -15,12 +15,12 @@ public class GameBoard {
 
     }
 
-    void display() {
-        System.out.println("   |[A][B][C][D][E][F][G][H][I][J]\n---|------------------------------");
+    public void display() {
+        System.out.println("   |[A][B][C][D][E][F][G][H][I][L]\n---|------------------------------");
         print(board);
     }
 
-    public static void print(Ship[][] board) {
+    private static void print(Ship[][] board) {
         for (int i = 0; i < board.length; i++) {
             System.out.print("["+i+"]|");
             for (int j = 0; j < board[i].length; j++) {

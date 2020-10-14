@@ -58,7 +58,7 @@ public class PlayGame {
         b.display();
     }
 
-    static boolean isValidInput(String s){
+    private static boolean isValidInput(String s){
         if (s.length() != 5) return false;
 
         char[] a = s.toCharArray();
@@ -71,7 +71,7 @@ public class PlayGame {
         return validChars && isInline;
     }
 
-    static boolean isValidLetter(char c){
+    private static boolean isValidLetter(char c){
         char[] validLetters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
         for (char l : validLetters) {
             if (l == c) return true;
@@ -79,7 +79,7 @@ public class PlayGame {
         return false;
     }
 
-    static boolean isValidDigit(char c){
+    private static boolean isValidDigit(char c){
         char[] validDigits = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
         for (char d : validDigits) {
             if (d == c) return true;
@@ -87,20 +87,20 @@ public class PlayGame {
         return false;
     }
 
-    static boolean isHorizontal(String a, String b){
+    private static boolean isHorizontal(String a, String b){
         char[] A = a.toCharArray();
         char[] B = b.toCharArray();
         return A[0] != B[0];
     }
 
-    static int computeLength(String a, String b, boolean horizontal){
+    private static int computeLength(String a, String b, boolean horizontal){
         char[] A = a.toCharArray();
         char[] B = b.toCharArray();
         if (horizontal) return Math.abs((int) A[0] - (int) B[0]) + 1;
         else return Math.abs((int) A[1] - (int) B[1]) + 1;
     }
 
-    static int computeBowColumn(String a, String b) {
+    private static int computeBowColumn(String a, String b) {
         char[] A = a.toCharArray();
         char[] B = b.toCharArray();
 
@@ -108,7 +108,7 @@ public class PlayGame {
         else return (int) B[0] - 65;
     }
 
-    static int computeBowRow(String a, String b) {
+    private static int computeBowRow(String a, String b) {
         char[] A = a.toCharArray();
         char[] B = b.toCharArray();
 
