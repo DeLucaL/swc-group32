@@ -49,7 +49,8 @@ public class PlayGame {
                 System.out.println("3 The specified input is invalid");
                 continue;
             }
-
+            //uncomment for testing purposes
+            //b.display();
             i++;
         }
 

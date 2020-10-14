@@ -57,7 +57,7 @@ abstract class Ship {
     }
 
     public void placeAt(int row, int col, boolean horizontal, GameBoard board) {
-        assert isPlaceableAt(row, col, horizontal, board);
+        if (!isPlaceableAt(row, col, horizontal, board)) throw new AssertionError();
 
         setHorizontal(horizontal);
         setBowRow(row);
