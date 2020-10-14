@@ -2,7 +2,7 @@ package assignments.SoftCon2020_Assignment_2;
 
 
 public class GameBoard {
-    private Ship[][] board = new Ship[10][10];
+    private final Ship[][] board = new Ship[10][10];
 
     GameBoard() {
         for (int x = 0; x < 10; x++) {
