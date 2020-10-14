@@ -2,7 +2,9 @@ package assignments.SoftCon2020_Assignment_2;
 
 
 public class GameBoard {
-    Ship[][] board = new Ship[10][10];
+    private Ship[][] board = new Ship[10][10];
+
+    Ship[][] getBoard(){return board;}
 
     GameBoard() {
         for (int x = 0; x < 10; x++) {
@@ -10,10 +12,11 @@ public class GameBoard {
                 board[y][x] = new Water();
             }
         }
+
     }
 
     void display() {
-        System.out.println("   |[A][B][C][D][E][F][G][H][I][L]\n---|------------------------------");
+        System.out.println("   |[A][B][C][D][E][F][G][H][I][J]\n---|------------------------------");
         print(board);
     }
 
