@@ -42,7 +42,7 @@ abstract class Ship {
 
     //Interact with board
 
-    public boolean isPlaceableAt(int row, int col, boolean horizontal, GameBoard board) {
+    private boolean isPlaceableAt(int row, int col, boolean horizontal, GameBoard board) {
         if (horizontal) {
             for (int i = 0; i < this.getSize(); i++) {
                 if (board.isOccupied(row, col + i)) return false;
@@ -57,6 +57,8 @@ abstract class Ship {
     }
 
     public void placeAt(int row, int col, boolean horizontal, GameBoard board) {
+        assert isPlaceableAt(row, col, horizontal, board);
+
         setHorizontal(horizontal);
         setBowRow(row);
         setBowColumn(col);
@@ -149,12 +151,12 @@ class PatrolBoat extends Ship {
 class Water extends Ship {
 
     @Override
-    int getSize() {
+    public int getSize() {
         return 1;
     }
 
     @Override
-    String getType() {
+    public String getType() {
         return "Water";
     }
 
