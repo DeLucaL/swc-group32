@@ -42,13 +42,15 @@ public class PlayGame {
                 continue;
             }
 
-            if (!ship.isPlaceableAt(row, column, horizontal, b)) {
+            try {
+                ship.placeAt(row, column, horizontal, b);
+            }
+            catch (AssertionError e) {
                 System.out.println("3 The specified input is invalid");
                 continue;
             }
-
-            ship.placeAt(row, column, horizontal, b);
-
+            //uncomment for testing purposes
+            //b.display();
             i++;
         }
 
