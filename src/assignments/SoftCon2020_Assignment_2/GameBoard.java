@@ -15,7 +15,6 @@ public class GameBoard {
     void display() {
         System.out.println("   |[A][B][C][D][E][F][G][H][I][L]\n---|------------------------------");
         print(board);
-        //System.out.println(Arrays.deepToString(board));
     }
 
     public static void print(Ship[][] board) {
@@ -28,7 +27,6 @@ public class GameBoard {
         }
     }
 
-    // encapsulation problem?
     boolean isOccupied(int row, int col) {
         return !board[row][col].getType().equals("Water");
     }
