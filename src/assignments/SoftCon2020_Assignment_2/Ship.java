@@ -65,12 +65,12 @@ abstract class Ship {
 
         if (horizontal) {
             for (int i = 0; i < this.getSize(); i++) {
-                board.board[row][col + i] = this;
+                board.getBoard()[row][col + i] = this;
             }
         }
         else {
             for (int i = 0; i < this.getSize(); i++) {
-                board.board[row + i][col] = this;
+                board.getBoard()[row + i][col] = this;
             }
         }
     }

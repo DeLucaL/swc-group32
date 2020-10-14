@@ -2,7 +2,7 @@ package assignments.SoftCon2020_Assignment_2;
 
 
 public class GameBoard {
-    Ship[][] board = new Ship[10][10];
+    private Ship[][] board = new Ship[10][10];
 
     GameBoard() {
         for (int x = 0; x < 10; x++) {
@@ -12,10 +12,14 @@ public class GameBoard {
         }
     }
 
+    // Getter
+    public Ship[][] getBoard() {
+        return board;
+    }
+
     public void display() {
         System.out.println("   |[A][B][C][D][E][F][G][H][I][L]\n---|------------------------------");
         print(board);
-        //System.out.println(Arrays.deepToString(board));
     }
 
     private static void print(Ship[][] board) {
@@ -28,8 +32,8 @@ public class GameBoard {
         }
     }
 
-    // encapsulation problem?
-    boolean isOccupied(int row, int col) {
+    // encapsulation problem? - don't think so, returns bool
+    public boolean isOccupied(int row, int col) {
         return !board[row][col].getType().equals("Water");
     }
 }
