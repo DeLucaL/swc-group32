@@ -1,14 +1,8 @@
 package assignments.SoftCon2020_Assignment_2;
 
-import java.util.Arrays;
 
 public class GameBoard {
     Ship[][] board = new Ship[10][10];
-    private Ship Carrier;
-    private Ship Battleship;
-    private Ship Submarine;
-    private Ship PatrolBoat;
-    private GameBoard GameBoard;
 
     GameBoard() {
         for (int x = 0; x < 10; x++) {
@@ -18,7 +12,6 @@ public class GameBoard {
         }
     }
 
-    //TODO edit display to match specification
     void display() {
         System.out.println("   |[A][B][C][D][E][F][G][H][I][L]\n---|------------------------------");
         print(board);
