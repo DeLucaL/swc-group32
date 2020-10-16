@@ -36,8 +36,8 @@ public class PlayGame {
                 continue;
             }
 
-            int row = input.getBow_x();
-            int column = input.getBow_y();
+            int column = input.getBow_x();
+            int row = input.getBow_y();
             boolean horizontal = input.isInputHorizontal();
 
             try {
