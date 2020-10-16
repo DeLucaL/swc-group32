@@ -18,7 +18,7 @@ public class GameBoard {
     }
 
     public void display() {
-        System.out.println("   |[A][B][C][D][E][F][G][H][I][L]\n---|------------------------------");
+        System.out.println("   |[A][B][C][D][E][F][G][H][I][J]\n---|------------------------------");
         print(board);
     }
 
