@@ -2,9 +2,7 @@ package assignments.SoftCon2020_Assignment_2;
 
 
 public class GameBoard {
-    private Ship[][] board = new Ship[10][10];
-
-    Ship[][] getBoard(){return board;}
+    private final Ship[][] board = new Ship[10][10];
 
     GameBoard() {
         for (int x = 0; x < 10; x++) {
@@ -12,7 +10,11 @@ public class GameBoard {
                 board[y][x] = new Water();
             }
         }
+    }
 
+    // Getter
+    public Ship[][] getBoard() {
+        return board;
     }
 
     public void display() {
@@ -30,7 +32,7 @@ public class GameBoard {
         }
     }
 
-    boolean isOccupied(int row, int col) {
+    public boolean isOccupied(int row, int col) {
         return !board[row][col].getType().equals("Water");
     }
 }
