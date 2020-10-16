@@ -1,3 +1,7 @@
+// INPUT INSTRUCTIONS: The board contains 10x10 spots. Rows are handled with numbers from 0 to 9 and columns
+// are handled with capital letters from A to J. Between the start and end point of the ship there should be a space.
+// An example input would be: A2 A5.
+
 package assignments.SoftCon2020_Assignment_2;
 
 import java.util.Scanner;
