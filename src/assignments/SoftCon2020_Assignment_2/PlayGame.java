@@ -20,7 +20,7 @@ public class PlayGame {
                 input = new Input(scanner.nextLine());
             }
             catch (IllegalArgumentException e) {
-                System.out.println("1 The specified input is invalid");
+                System.out.println("The specified input is invalid");
                 continue;
             }
 
@@ -32,7 +32,7 @@ public class PlayGame {
             else ship = new PatrolBoat();
 
             if (input.getDistance() != ship.getSize()) {
-                System.out.println("2 The specified input is invalid");
+                System.out.println("The specified input is invalid");
                 continue;
             }
 
@@ -44,7 +44,7 @@ public class PlayGame {
                 ship.placeAt(row, column, horizontal, ocean);
             }
             catch (AssertionError e) {
-                System.out.println("3 The specified input is invalid");
+                System.out.println("The specified input is invalid");
                 continue;
             }
             //uncomment for testing purposes
