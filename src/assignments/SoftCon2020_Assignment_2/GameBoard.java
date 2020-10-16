@@ -32,7 +32,6 @@ public class GameBoard {
         }
     }
 
-
     public boolean isOccupied(int row, int col) {
         return !board[row][col].getType().equals("Water");
     }
