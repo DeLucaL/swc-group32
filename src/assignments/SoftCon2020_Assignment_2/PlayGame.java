@@ -22,7 +22,7 @@ public class PlayGame {
             String input = scanner.nextLine();
             //input format
             if (!isValidInput(input)) {
-                System.out.println("1 The specified input is invalid");
+                System.out.println("The specified input is invalid");
                 continue;
             }
 
@@ -43,7 +43,7 @@ public class PlayGame {
             int row = computeBowRow(start, end);
 
             if (computeLength(start, end, horizontal) != ship.getSize()) {
-                System.out.println("2 The specified input is invalid");
+                System.out.println("The specified input is invalid");
                 continue;
             }
 
@@ -51,7 +51,7 @@ public class PlayGame {
                 ship.placeAt(row, column, horizontal, b);
             }
             catch (AssertionError e) {
-                System.out.println("3 The specified input is invalid");
+                System.out.println("The specified input is invalid");
                 continue;
             }
             //uncomment for testing purposes
