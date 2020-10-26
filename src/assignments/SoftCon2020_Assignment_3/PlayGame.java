@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class PlayGame {
     public static void main(String[] args){
-        System.out.println("Welcome to Battleship!\n");
+        /*System.out.println("Welcome to Battleship!\n");
 
         GameBoard PlayerOcean = new GameBoard();
         String[] ships = {"Carrier", "Battleship 1", "Battleship 2", "Submarine 1", "Submarine 2",
@@ -58,9 +58,13 @@ public class PlayGame {
 
         System.out.println("Your board is:\n");
         PlayerOcean.display();
-
+*/
         //third Assignment starts
-        GameBoard ComputerOcean = assignments.SoftCon2020_Assignment_3.ComputerOceansetComputerOcean();
+        GameBoard c = new GameBoard();
+        c = ComputerOcean.setComputerOcean();
+        c.display();
+
+        /*
         System.out.println("The opponent's board is:");
         ComputerOcean.display();
         ScoreBoard.print();
@@ -73,6 +77,6 @@ public class PlayGame {
         }
     }
 
+*/
 
-    }
-}
+}}
