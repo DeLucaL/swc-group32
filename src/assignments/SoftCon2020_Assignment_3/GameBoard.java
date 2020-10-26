@@ -1,6 +1,6 @@
 package assignments.SoftCon2020_Assignment_3;
 
-public class GameBoard {
+public class GameBoard implements Subject{
     private final assignments.SoftCon2020_Assignment_3.Ship[][] board = new assignments.SoftCon2020_Assignment_3.Ship[10][10];
 
     GameBoard() {

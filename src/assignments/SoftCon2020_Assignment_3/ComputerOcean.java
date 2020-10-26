@@ -1,15 +1,10 @@
-// INPUT INSTRUCTIONS: The board contains 10x10 spots. Rows are handled with numbers from 0 to 9 and columns
-// are handled with capital letters from A to J. Between the start and end point of the ship there should be a space.
-// An example input would be: A2 A5.
-
 package assignments.SoftCon2020_Assignment_3;
 
 import java.util.Scanner;
 
-public class PlayGame {
-    public static void main(String[] args){
-        System.out.println("Welcome to Battleship!\n");
-
+public class ComputerOcean implements Observer{
+    //randomize input for Computer Board
+    public static GameBoard setComputerOcean(){
         GameBoard PlayerOcean = new GameBoard();
         String[] ships = {"Carrier", "Battleship 1", "Battleship 2", "Submarine 1", "Submarine 2",
                 "Submarine 3", "Patrol boat 1", "Patrol boat 2", "Patrol boat 3", "Patrol boat 4"};
@@ -56,23 +51,5 @@ public class PlayGame {
             i++;
         }
 
-        System.out.println("Your board is:\n");
-        PlayerOcean.display();
-
-        //third Assignment starts
-        GameBoard ComputerOcean = assignments.SoftCon2020_Assignment_3.ComputerOceansetComputerOcean();
-        System.out.println("The opponent's board is:");
-        ComputerOcean.display();
-        ScoreBoard.print();
-        Scanner scanner = new Scanner(System.in);
-
-        while (!isGameOver()){
-            "enter place to hit"
-            String input = new String(scanner.nextLine());
-            hit hit = new hit(input)
-        }
-    }
-
-
-    }
+        update()
 }
