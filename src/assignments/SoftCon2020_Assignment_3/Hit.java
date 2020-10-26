@@ -1,12 +1,24 @@
 package assignments.SoftCon2020_Assignment_3;
 
 public class Hit{
-    private final int shot;
+    private final int shot_x;
+    private final int shot_y;
 
     //Constructor
     public Hit(String user_input) {
         if (!isValidUserInput(user_input)) throw new IllegalArgumentException();
-        shot = computeInput();
+
+        char[] A = user_input.toCharArray();
+        shot_x = (int) A[0] - 65;
+        shot_y = A[1];
+    }
+
+    //Getters
+    public int getX() {
+        return shot_x;
+    }
+    public int getY() {
+        return shot_y;
     }
 
     //Private - used in constructor
@@ -33,9 +45,13 @@ public class Hit{
         return false;
     }
 
-    private int computeInput(){
-        return 0;
-    }
+    public void shoot(Gameboard board){
+        if(board.isOccupied(shot_x, shot_y)){
+            //hit
+        }
+        else{
+            //miss
+        }
 
-    //private void updateHit(String input){}
+    }
 }

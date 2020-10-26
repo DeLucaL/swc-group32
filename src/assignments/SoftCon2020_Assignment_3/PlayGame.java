@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class PlayGame {
     public static void main(String[] args){
-        /*System.out.println("Welcome to Battleship!\n");
+        System.out.println("Welcome to Battleship!\n");
 
         GameBoard PlayerOcean = new GameBoard();
         String[] ships = {"Carrier", "Battleship 1", "Battleship 2", "Submarine 1", "Submarine 2",
@@ -58,25 +58,33 @@ public class PlayGame {
 
         System.out.println("Your board is:\n");
         PlayerOcean.display();
-*/
+
         //third Assignment starts
         GameBoard c = new GameBoard();
         c = ComputerOcean.setComputerOcean();
         c.display();
 
-        /*
         System.out.println("The opponent's board is:");
         ComputerOcean.display();
         ScoreBoard.print();
-        Scanner scanner = new Scanner(System.in);
 
         while (!isGameOver()){
-            "enter place to hit"
-            String input = new String(scanner.nextLine());
-            hit hit = new hit(input)
+            System.out.println("Enter place to hit: ");
+            Scanner scanner = new Scanner(System.in);
+            assignments.SoftCon2020_Assignment_3.Hit hit;
+            try {
+                hit = new Hit(scanner.nextLine());
+            }
+            catch (IllegalArgumentException e) {
+                System.out.println("The specified input is invalid");
+                continue;
+            }
+
+            hit.shoot(ComputerOcean);
+
+            //hit.shoot(PlayerOcean);       Computer shoots at PlayerOcean
+
+            i++;
         }
     }
-
-*/
-
-}}
+}
