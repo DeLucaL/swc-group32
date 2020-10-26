@@ -64,7 +64,9 @@ public class ComputerOcean implements Observer{
         return computer_ocean;
     }
 
-    void update(){
 
-        }
+    @Override
+    public void update() {
+
+    }
 }

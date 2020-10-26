@@ -1,19 +1,33 @@
 package assignments.SoftCon2020_Assignment_3;
 
-//implements Subject
-public class GameBoard{
-    private final assignments.SoftCon2020_Assignment_3.Ship[][] board = new assignments.SoftCon2020_Assignment_3.Ship[10][10];
+import java.util.ArrayList;
+
+public class GameBoard implements Subject{
+    private final Ship[][] board = new assignments.SoftCon2020_Assignment_3.Ship[10][10];
+    private ArrayList observers;
 
     GameBoard() {
         for (int x = 0; x < 10; x++) {
             for (int y = 0; y < 10; y++) {
-                board[y][x] = new assignments.SoftCon2020_Assignment_3.Water();
+                board[y][x] = new Water();
             }
+            observers = new ArrayList();
         }
     }
 
+    //Observer-Pattern register & remove observers, notify Observers
+    public void registerObserver(Observer o) { observers.add(o);}
+    public void removeObserver(Observer o) {
+        int i = observers.indexOf(o); if (i >= 0) { observers.remove(i);}
+    }
+    public void notifyObservers() {
+        for (int i = 0; i < observers.size(); i++) {
+            Observer observer = (Observer)observers.get(i);
+            observer.update();
+    }}
+
     // Getter
-    public assignments.SoftCon2020_Assignment_3.Ship[][] getBoard() {
+    public Ship[][] getBoard() {
         return board;
     }
 
