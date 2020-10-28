@@ -3,7 +3,7 @@ package assignments.SoftCon2020_Assignment_3;
 import java.util.ArrayList;
 
 public class GameBoard implements Subject{
-    private final Ship[][] board = new assignments.SoftCon2020_Assignment_3.Ship[10][10];
+    private final Ship[][] board = new Ship[10][10];
     private ArrayList observers;
 
     GameBoard() {
@@ -23,7 +23,7 @@ public class GameBoard implements Subject{
     public void notifyObservers() {
         for (int i = 0; i < observers.size(); i++) {
             Observer observer = (Observer)observers.get(i);
-            observer.update();
+            observer.update(GameBoard GameBoard);
     }}
 
     // Getter

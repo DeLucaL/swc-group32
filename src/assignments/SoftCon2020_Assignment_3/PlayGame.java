@@ -10,7 +10,7 @@ public class PlayGame {
     public static void main(String[] args){
         System.out.println("Welcome to Battleship!\n");
 
-        GameBoard PlayerOcean = new GameBoard();
+        GameBoard player_board = new GameBoard();
         String[] ships = {"Carrier", "Battleship 1", "Battleship 2", "Submarine 1", "Submarine 2",
                 "Submarine 3", "Patrol boat 1", "Patrol boat 2", "Patrol boat 3", "Patrol boat 4"};
 
@@ -45,7 +45,7 @@ public class PlayGame {
             boolean horizontal = input.isInputHorizontal();
 
             try {
-                ship.placeAt(row, column, horizontal, PlayerOcean);
+                ship.placeAt(row, column, horizontal, player_board);
             }
             catch (AssertionError e) {
                 System.out.println("The specified input is invalid");
@@ -57,21 +57,28 @@ public class PlayGame {
         }
 
         System.out.println("Your board is:\n");
-        PlayerOcean.display();
+        player_board.display();
+
+
 
         //third Assignment starts
-        GameBoard c = new GameBoard();
-        c = ComputerOcean.setComputerOcean();
-        c.display();
+        GameBoard computer_board = new GameBoard();
+        System.out.println("\nThe opponent's board is:\n");
+        computer_board.display();
+        computer_board = ComputerOcean.setComputerOcean();
 
-        System.out.println("The opponent's board is:");
-        ComputerOcean.display();
-        ScoreBoard.print();
+        //uncomment for testing purposes:
+        computer_board.display();
 
-        while (!isGameOver()){
+        System.out.print("\n");
+        ScoreBoard score_board = ScoreBoard.getInstance();
+        score_board.print();
+
+
+        while (!Subject.getIsGameOver()){ //at a moment an endless loop!!!
             System.out.println("Enter place to hit: ");
             Scanner scanner = new Scanner(System.in);
-            assignments.SoftCon2020_Assignment_3.Hit hit;
+            Hit hit;
             try {
                 hit = new Hit(scanner.nextLine());
             }
@@ -80,11 +87,14 @@ public class PlayGame {
                 continue;
             }
 
-            hit.shoot(ComputerOcean);
+            hit.shoot(computer_board);
+            hit.shoot(player_board);       //Computer shoots at PlayerOcean
+            //If a boat is hit in the computer's board, an X will appear in the position the bomb was thrown
+            //Otherwise, an O should be shown.
+            player_board.display();
+            computer_board.display();
+            score_board.print();
 
-            //hit.shoot(PlayerOcean);       Computer shoots at PlayerOcean
-
-            i++;
         }
     }
 }

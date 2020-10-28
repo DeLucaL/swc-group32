@@ -19,8 +19,7 @@ public class ScoreBoard implements Observer{
         System.out.println("Your scoreboard:\n\t- Player remaining boats: "+remaining_boats+"\n\t- Enemy boats destroyed: "+destroyed_boats);
     }
 
-    @Override
-    public void update() {
+    public void update(GameBoard GameBoard) {
         // update remaining boats and destroyed boats
     }
 }

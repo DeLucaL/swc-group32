@@ -45,7 +45,7 @@ public class Hit{
         return false;
     }
 
-    public void shoot(Gameboard board){
+    public void shoot(GameBoard board){
         if(board.isOccupied(shot_x, shot_y)){
             //hit
         }
