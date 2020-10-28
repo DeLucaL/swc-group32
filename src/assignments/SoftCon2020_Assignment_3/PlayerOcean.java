@@ -8,7 +8,7 @@ public class PlayerOcean implements Observer{
         GameBoard.registerObserver(this);
     }
 
-    public void update(GameBoard GameBoard) {
+    public void update(GameBoard game_board) {
         //? check whether board has been hit
     }
 }

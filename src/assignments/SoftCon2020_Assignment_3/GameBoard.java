@@ -23,7 +23,8 @@ public class GameBoard implements Subject{
     public void notifyObservers() {
         for (int i = 0; i < observers.size(); i++) {
             Observer observer = (Observer)observers.get(i);
-            observer.update(GameBoard GameBoard);
+            GameBoard game_board = new GameBoard();
+            observer.update(game_board);
     }}
 
     // Getter

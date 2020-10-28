@@ -65,8 +65,7 @@ public class ComputerOcean implements Observer{
     }
 
 
-    @Override
-    public void update() {
+    public void update(GameBoard game_Board) {
 
     }
 }
