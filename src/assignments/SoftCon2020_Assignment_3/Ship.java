@@ -140,7 +140,6 @@ class Carrier extends Ship  {
         }
     }
 
-    @Override
     public void notifyObservers() {
         for (int i = 0; i < observers.size(); i++) {
             Observer observer = (Observer)observers.get(i);
@@ -183,7 +182,6 @@ class Battleship extends Ship {
         }
     }
 
-    @Override
     public void notifyObservers() {
         for (int i = 0; i < observers.size(); i++) {
             Observer observer = (Observer)observers.get(i);
@@ -226,7 +224,6 @@ class Submarine extends Ship {
         }
     }
 
-    @Override
     public void notifyObservers() {
         for (int i = 0; i < observers.size(); i++) {
             Observer observer = (Observer)observers.get(i);
@@ -269,7 +266,6 @@ class PatrolBoat extends Ship {
         }
     }
 
-    @Override
     public void notifyObservers() {
         for (int i = 0; i < observers.size(); i++) {
             Observer observer = (Observer)observers.get(i);
@@ -312,7 +308,6 @@ class Water extends Ship {
         }
     }
 
-    @Override
     public void notifyObservers() {
         for (int i = 0; i < observers.size(); i++) {
             Observer observer = (Observer)observers.get(i);

@@ -52,7 +52,7 @@ public class Hit{
             //hit
             Ship[][] b = board.getBoard();
             b[shot_x][shot_y].setHit(); //sets also string to X
-            b.notify();
+            b[shot_x][shot_y].notifyObservers();
         }
         else{
             //miss
