@@ -10,8 +10,10 @@ public class Hit{
 
         char[] A = user_input.toCharArray();
         shot_x = (int) A[0] - 65;
-        shot_y = A[1];
+        shot_y = A[1]- 48;
     }
+
+
 
     //Getters
     public int getX() {
@@ -48,9 +50,14 @@ public class Hit{
     public void shoot(GameBoard board){
         if(board.isOccupied(shot_x, shot_y)){
             //hit
+            Ship[][] b = board.getBoard();
+            b[shot_x][shot_y].setHit(); //sets also string to X
+            b.notify();
         }
         else{
             //miss
+            Ship[][] b = board.getBoard();
+            b[shot_x][shot_y].setMiss();
         }
 
     }

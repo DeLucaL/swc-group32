@@ -2,7 +2,7 @@ package assignments.SoftCon2020_Assignment_3;
 
 import java.util.Random;
 
-public class ComputerOcean implements Observer{
+public class ComputerOcean{
 
 
     //randomize input for Computer Board
@@ -64,8 +64,4 @@ public class ComputerOcean implements Observer{
         return computer_ocean;
     }
 
-
-    public void update(GameBoard game_Board) {
-
-    }
 }

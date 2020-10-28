@@ -4,6 +4,7 @@
 
 package assignments.SoftCon2020_Assignment_3;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class PlayGame {
@@ -14,6 +15,7 @@ public class PlayGame {
         String[] ships = {"Carrier", "Battleship 1", "Battleship 2", "Submarine 1", "Submarine 2",
                 "Submarine 3", "Patrol boat 1", "Patrol boat 2", "Patrol boat 3", "Patrol boat 4"};
 
+        /*
         int i = 0;
         while (i < 10){
             System.out.print("Please enter the position of your " + ships[i] +":\t");
@@ -58,7 +60,36 @@ public class PlayGame {
 
         System.out.println("Your board is:\n");
         player_board.display();
+        */
+        //uncomment for testing purposes
+        int i = 0;
+        while (i < 10){
+            String s[] = {"E9 J9", "A2 A5", "G0 J0", "D0 D2", "F2 H2", "J5 J7", "A0 B0", "A7 B7", "F5 F6", "J2 J3"};
+            Ship ship;
+            if (i == 0) ship = new assignments.SoftCon2020_Assignment_3.Carrier();
+            else if (i <= 2) ship = new assignments.SoftCon2020_Assignment_3.Battleship();
+            else if (i <= 5) ship = new assignments.SoftCon2020_Assignment_3.Submarine();
+            else ship = new assignments.SoftCon2020_Assignment_3.PatrolBoat();
+            Input input;
+            input = new Input(s[i]);
+            int column = input.getBow_x();
+            int row = input.getBow_y();
+            boolean horizontal = input.isInputHorizontal();
 
+            try {
+                ship.placeAt(row, column, horizontal, player_board);
+            }
+            catch (AssertionError e) {
+                System.out.println("The specified input is invalid");
+                continue;
+            }
+            //uncomment for testing purposes
+            //b.display();
+            i++;
+        }
+
+        System.out.println("Your board is:\n");
+        player_board.display();
 
 
         //third Assignment starts
@@ -75,20 +106,28 @@ public class PlayGame {
         score_board.print();
 
 
-        while (!Subject.getIsGameOver()){ //at a moment an endless loop!!!
+        while (!score_board.isGameOver){
             System.out.println("Enter place to hit: ");
             Scanner scanner = new Scanner(System.in);
-            Hit hit;
+            Hit hit_p;
             try {
-                hit = new Hit(scanner.nextLine());
+                hit_p = new Hit(scanner.nextLine());
             }
             catch (IllegalArgumentException e) {
                 System.out.println("The specified input is invalid");
                 continue;
             }
 
-            hit.shoot(computer_board);
-            hit.shoot(player_board);       //Computer shoots at PlayerOcean
+            hit_p.shoot(computer_board);      // Player shoots at computer_board
+
+            //create a random hit
+            String[] Letters = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
+            Random random = new Random();
+            int r1 = random.nextInt(10);
+            int r2 = random.nextInt(10);
+            String random_input = Letters[r1] +  Integer.toString(r2);
+            Hit hit_c = new Hit(random_input);
+            hit_c.shoot(player_board);       //Computer shoots at player_board
             //If a boat is hit in the computer's board, an X will appear in the position the bomb was thrown
             //Otherwise, an O should be shown.
             player_board.display();

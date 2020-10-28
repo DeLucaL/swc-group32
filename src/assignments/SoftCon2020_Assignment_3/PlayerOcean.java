@@ -1,7 +1,7 @@
 package assignments.SoftCon2020_Assignment_3;
 
-public class PlayerOcean implements Observer{
-    private Subject GameBoard;
+public class PlayerOcean{
+    /*private Subject GameBoard;
 
     public PlayerOcean (Subject GameBoard){
         this.GameBoard = GameBoard;
@@ -10,5 +10,5 @@ public class PlayerOcean implements Observer{
 
     public void update(GameBoard game_board) {
         //? check whether board has been hit
-    }
+    }*/
 }

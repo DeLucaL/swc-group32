@@ -1,14 +1,23 @@
 package assignments.SoftCon2020_Assignment_3;
 
-abstract class Ship {
+import java.util.ArrayList;
+
+abstract class Ship implements Subject { //additional Interface ShipShip (implements Subject, ShipShip)
 
     private int bowRow;
     private int bowColumn;
     private boolean horizontal;
+    private boolean isHit;
+    private boolean isSunk;
+
+    public String string;
 
     abstract int getSize();
     abstract String getType();
 
+    public String toString() {
+        return "[" + string + "]";
+    }
 
     //Getters
 
@@ -24,6 +33,13 @@ abstract class Ship {
         return horizontal;
     }
 
+    private boolean getIsSunk(){
+        return isSunk;
+    }
+
+    private boolean getIsHIt(){
+        return isHit;
+    }
 
     //Setters
 
@@ -37,6 +53,19 @@ abstract class Ship {
 
     private void setHorizontal(boolean horizontal) {
         this.horizontal = horizontal;
+    }
+
+    public void setSunk(){
+        this.isSunk = true;
+    }
+
+    public void setHit(){
+        this.isHit = true;
+        this.string = "X";
+    }
+
+    public void setMiss(){
+        this.string = "O";
     }
 
 
@@ -76,8 +105,13 @@ abstract class Ship {
     }
 }
 
-class Carrier extends Ship {
+class Carrier extends Ship  {
+    private ArrayList observers;
 
+    public Carrier() {
+        observers = new ArrayList();
+        string = "C";
+    }
     @Override
     public int getSize() {
         return 6;
@@ -90,14 +124,38 @@ class Carrier extends Ship {
 
     @Override
     public String toString() {
-        return "[C]";
+        return "["+string+"]";
     }
 
 
+    @Override
+    public void registerObserver(Observer o) {
+        observers.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        int i = observers.indexOf(o); if (i >= 0) {
+            observers.remove(i);
+        }
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (int i = 0; i < observers.size(); i++) {
+            Observer observer = (Observer)observers.get(i);
+            observer.update();
+        }
+    }
 }
 
 class Battleship extends Ship {
+    private ArrayList observers;
 
+    public Battleship() {
+        observers = new ArrayList();
+        string = "B";
+    }
     @Override
     public int getSize() {
         return 4;
@@ -112,10 +170,35 @@ class Battleship extends Ship {
     public String toString() {
         return "[B]";
     }
+
+    @Override
+    public void registerObserver(Observer o) {
+        observers.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        int i = observers.indexOf(o); if (i >= 0) {
+            observers.remove(i);
+        }
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (int i = 0; i < observers.size(); i++) {
+            Observer observer = (Observer)observers.get(i);
+            observer.update();
+        }
+    }
 }
 
 class Submarine extends Ship {
+    private ArrayList observers;
 
+    public Submarine() {
+        string = "S";
+        observers = new ArrayList();
+    }
     @Override
     public int getSize() {
         return 3;
@@ -130,10 +213,35 @@ class Submarine extends Ship {
     public String toString() {
         return "[S]";
     }
+
+    @Override
+    public void registerObserver(Observer o) {
+        observers.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        int i = observers.indexOf(o); if (i >= 0) {
+            observers.remove(i);
+        }
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (int i = 0; i < observers.size(); i++) {
+            Observer observer = (Observer)observers.get(i);
+            observer.update();
+        }
+    }
 }
 
 class PatrolBoat extends Ship {
+    private ArrayList observers;
 
+    public PatrolBoat() {
+        string = "P";
+        observers = new ArrayList();
+    }
     @Override
     public int getSize() {
         return 2;
@@ -148,10 +256,35 @@ class PatrolBoat extends Ship {
     public String toString() {
         return "[P]";
     }
+
+    @Override
+    public void registerObserver(Observer o) {
+        observers.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        int i = observers.indexOf(o); if (i >= 0) {
+            observers.remove(i);
+        }
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (int i = 0; i < observers.size(); i++) {
+            Observer observer = (Observer)observers.get(i);
+            observer.update();
+        }
+    }
 }
 
 class Water extends Ship {
+    private ArrayList observers;
 
+    public Water() {
+        string = "W";
+        observers = new ArrayList();
+    }
     @Override
     public int getSize() {
         return 1;
@@ -165,5 +298,25 @@ class Water extends Ship {
     @Override
     public String toString() {
         return "[ ]";
+    }
+
+    @Override
+    public void registerObserver(Observer o) {
+        observers.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        int i = observers.indexOf(o); if (i >= 0) {
+            observers.remove(i);
+        }
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (int i = 0; i < observers.size(); i++) {
+            Observer observer = (Observer)observers.get(i);
+            observer.update();
+        }
     }
 }
