@@ -118,7 +118,8 @@ public class PlayGame {
                 continue;
             }
 
-            hit_p.player_shoot(computer_board, score_board);      // Player shoots at computer_board
+            // Player shoots at computer_board
+            hit_p.player_shoot(computer_board, score_board);
 
             //create a random hit
             String[] Letters = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
@@ -127,14 +128,21 @@ public class PlayGame {
             int r2 = random.nextInt(10);
             String random_input = Letters[r1] +  r2;
             Hit hit_c = new Hit(random_input);
-            hit_c.computer_shoot(player_board);      //Computer shoots at player_board
+
+            //Computer shoots at player_board
+            hit_c.computer_shoot(player_board);
+
             //If a boat is hit in the computer's board, an X will appear in the position the bomb was thrown
             //Otherwise, an O should be shown.
+
             player_board.display();
             System.out.println("\n");
             computer_board.display_hits();
             score_board.print();
 
         }
+        if (score_board.getRemaining_boats() >0){System.out.println(" Sorry, you lost! ");}
+        else{System.out.println("Congratulations, you won! ");}
+
     }
 }

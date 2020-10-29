@@ -37,7 +37,7 @@ abstract class Ship implements Subject { //additional Interface ShipShip (implem
         return isSunk;
     }
 
-    private boolean getIsHIt(){
+    public boolean getIsHIt(){
         return isHit;
     }
 
@@ -61,11 +61,6 @@ abstract class Ship implements Subject { //additional Interface ShipShip (implem
 
     public void setHit(){
         this.isHit = true;
-        this.string = "X";
-    }
-
-    public void setMiss(){
-        this.string = "O";
     }
 
 

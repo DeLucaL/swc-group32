@@ -32,4 +32,7 @@ public class ScoreBoard implements Observer{
         }
         return false;
     }
+    public int getRemaining_boats(){
+        return remaining_boats;
+    }
 }

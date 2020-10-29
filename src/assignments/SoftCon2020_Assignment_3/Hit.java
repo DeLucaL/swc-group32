@@ -55,11 +55,14 @@ public class Hit{
             b[shot_y][shot_x].registerObserver(score_board);
             b[shot_y][shot_x].notifyObservers();
             //b[shot_y][shot_x].removeObserver(score_board); don't know yet if necessary
+            System.out.println(" You hit a boat! ");
+            // If whole boat got destroyed " You destroyed a [boat name] "
         }
         else{
             //miss
             Ship[][] b = board.getBoard();
-            b[shot_x][shot_y].setMiss();
+            b[shot_x][shot_y].setHit();
+            System.out.println("Miss");
         }
 
     }
@@ -68,11 +71,14 @@ public class Hit{
             //hit
             Ship[][] b = board.getBoard();
             b[shot_y][shot_x].setHit(); //sets also string to X, doesn't work yet
+            System.out.println(" Your boat was hit! ");
+            // if whole boat was destroyed: " Your [boat name] was destroyed" .
         }
         else{
             //miss
             Ship[][] b = board.getBoard();
-            b[shot_x][shot_y].setMiss();
+            b[shot_x][shot_y].setHit();
+            System.out.println(" The computer missed ");
         }
 
     }

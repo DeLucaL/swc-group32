@@ -1,6 +1,5 @@
 package assignments.SoftCon2020_Assignment_3;
 
-import java.util.ArrayList;
 
 public class GameBoard{
     private final Ship[][] board = new Ship[10][10];
@@ -42,13 +41,17 @@ public class GameBoard{
         System.out.println("   |[A][B][C][D][E][F][G][H][I][J]\n---|------------------------------");
         for (int i = 0; i < board.length; i++) {
             System.out.print("["+i+"]|");
-            for (int j = 0; j < board[i].length; j++) { //if does not work, dont know why
-                if (board[i][j].getIsSunk() || (board[i][j].toString()=="[O]") || (board[i][j].toString()=="[X]") || (board[i][j].toString()=="[ ]")){
-                System.out.print(board[i][j]);
-            }}
+            for (int j = 0; j < board[i].length; j++) {
+                if (board[i][j].getIsHIt() && board[i][j].toString().equals("[ ]")){
+                    System.out.print("[O]");
+                } else if (board[i][j].getIsHIt()){
+                    System.out.print("[X]");
+                }
+                else {System.out.print("[ ]");}
+            }
             System.out.println();
-        }
-    }
+
+    }}
 
 }
 
