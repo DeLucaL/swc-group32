@@ -33,7 +33,7 @@ abstract class Ship implements Subject { //additional Interface ShipShip (implem
         return horizontal;
     }
 
-    private boolean getIsSunk(){
+    public boolean getIsSunk(){
         return isSunk;
     }
 
@@ -167,7 +167,7 @@ class Battleship extends Ship {
 
     @Override
     public String toString() {
-        return "[B]";
+        return "["+string+"]";
     }
 
     @Override
@@ -209,7 +209,7 @@ class Submarine extends Ship {
 
     @Override
     public String toString() {
-        return "[S]";
+        return "["+string+"]";
     }
 
     @Override
@@ -251,7 +251,7 @@ class PatrolBoat extends Ship {
 
     @Override
     public String toString() {
-        return "[P]";
+        return "["+string+"]";
     }
 
     @Override
@@ -278,7 +278,7 @@ class Water extends Ship {
     private ArrayList observers;
 
     public Water() {
-        string = "W";
+        string = " ";
         observers = new ArrayList();
     }
     @Override
@@ -293,7 +293,7 @@ class Water extends Ship {
 
     @Override
     public String toString() {
-        return "[ ]";
+        return "["+string+"]";
     }
 
     @Override

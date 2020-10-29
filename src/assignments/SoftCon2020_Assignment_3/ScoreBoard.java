@@ -6,7 +6,7 @@ public class ScoreBoard implements Observer{
     private int remaining_boats = 10;
     private int destroyed_boats = 0;
 
-    private ScoreBoard(){}
+    private ScoreBoard(){} //to register observer, pass subject
 
     //Singleton Pattern
     public static ScoreBoard getInstance() {
@@ -21,6 +21,7 @@ public class ScoreBoard implements Observer{
     }
 
     public void update() {
+        // change: only if the whole boat is sunk
         remaining_boats -= 1;
         destroyed_boats += 1;
     }

@@ -99,7 +99,7 @@ public class PlayGame {
         computer_board = ComputerOcean.setComputerOcean();
 
         //uncomment for testing purposes:
-        computer_board.display();
+        //computer_board.display();
 
         System.out.print("\n");
         ScoreBoard score_board = ScoreBoard.getInstance();
@@ -118,20 +118,21 @@ public class PlayGame {
                 continue;
             }
 
-            hit_p.shoot(computer_board);      // Player shoots at computer_board
+            hit_p.player_shoot(computer_board, score_board);      // Player shoots at computer_board
 
             //create a random hit
             String[] Letters = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
             Random random = new Random();
             int r1 = random.nextInt(10);
             int r2 = random.nextInt(10);
-            String random_input = Letters[r1] +  Integer.toString(r2);
+            String random_input = Letters[r1] +  r2;
             Hit hit_c = new Hit(random_input);
-            hit_c.shoot(player_board);       //Computer shoots at player_board
+            hit_c.computer_shoot(player_board);      //Computer shoots at player_board
             //If a boat is hit in the computer's board, an X will appear in the position the bomb was thrown
             //Otherwise, an O should be shown.
             player_board.display();
-            computer_board.display();
+            System.out.println("\n");
+            computer_board.display_hits();
             score_board.print();
 
         }

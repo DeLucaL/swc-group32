@@ -24,7 +24,7 @@ public class GameBoard{
         print(board);
     }
 
-    private static void print(assignments.SoftCon2020_Assignment_3.Ship[][] board) {
+    private static void print(Ship[][] board) {
         for (int i = 0; i < board.length; i++) {
             System.out.print("["+i+"]|");
             for (int j = 0; j < board[i].length; j++) {
@@ -37,5 +37,18 @@ public class GameBoard{
     public boolean isOccupied(int row, int col) {
         return !board[row][col].getType().equals("Water");
     }
+
+    public void display_hits(){
+        System.out.println("   |[A][B][C][D][E][F][G][H][I][J]\n---|------------------------------");
+        for (int i = 0; i < board.length; i++) {
+            System.out.print("["+i+"]|");
+            for (int j = 0; j < board[i].length; j++) { //if does not work, dont know why
+                if (board[i][j].getIsSunk() || (board[i][j].toString()=="[O]") || (board[i][j].toString()=="[X]") || (board[i][j].toString()=="[ ]")){
+                System.out.print(board[i][j]);
+            }}
+            System.out.println();
+        }
+    }
+
 }
 

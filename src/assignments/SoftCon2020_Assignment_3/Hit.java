@@ -47,12 +47,27 @@ public class Hit{
         return false;
     }
 
-    public void shoot(GameBoard board){
-        if(board.isOccupied(shot_x, shot_y)){
+    public void player_shoot(GameBoard board, ScoreBoard score_board){
+        if(board.isOccupied(shot_y, shot_x)){
             //hit
             Ship[][] b = board.getBoard();
-            b[shot_x][shot_y].setHit(); //sets also string to X
-            b[shot_x][shot_y].notifyObservers();
+            b[shot_y][shot_x].setHit(); //sets also string to X, doesn't work yet
+            b[shot_y][shot_x].registerObserver(score_board);
+            b[shot_y][shot_x].notifyObservers();
+            //b[shot_y][shot_x].removeObserver(score_board); don't know yet if necessary
+        }
+        else{
+            //miss
+            Ship[][] b = board.getBoard();
+            b[shot_x][shot_y].setMiss();
+        }
+
+    }
+    public void computer_shoot(GameBoard board){
+        if(board.isOccupied(shot_y, shot_x)){
+            //hit
+            Ship[][] b = board.getBoard();
+            b[shot_y][shot_x].setHit(); //sets also string to X, doesn't work yet
         }
         else{
             //miss
