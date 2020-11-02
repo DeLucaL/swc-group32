@@ -15,7 +15,7 @@ public class PlayGame {
         String[] ships = {"Carrier", "Battleship 1", "Battleship 2", "Submarine 1", "Submarine 2",
                 "Submarine 3", "Patrol boat 1", "Patrol boat 2", "Patrol boat 3", "Patrol boat 4"};
 
-        /*
+
         int i = 0;
         while (i < 10){
             System.out.print("Please enter the position of your " + ships[i] +":\t");
@@ -60,9 +60,9 @@ public class PlayGame {
 
         System.out.println("Your board is:\n");
         player_board.display_player_board();
-        */
+
         //uncomment for testing purposes
-        int i = 0;
+        /*int i = 0;
         while (i < 10){
             String s[] = {"E9 J9", "A2 A5", "G0 J0", "D0 D2", "F2 H2", "J5 J7", "A0 B0", "A7 B7", "F5 F6", "J2 J3"};
             Ship ship;
@@ -90,7 +90,7 @@ public class PlayGame {
 
         System.out.println("Your board is:\n");
         player_board.display_player_board();
-
+        */
 
         //third Assignment starts
         GameBoard computer_board = new GameBoard();
@@ -99,7 +99,7 @@ public class PlayGame {
         computer_board = ComputerOcean.setComputerOcean();
 
         //uncomment for testing purposes:
-        computer_board.display_player_board();
+        //computer_board.display_player_board();
 
         System.out.print("\n");
         ScoreBoard score_board = ScoreBoard.getInstance();
@@ -121,7 +121,7 @@ public class PlayGame {
             // Player shoots at computer_board
             hit_p.player_shoot(computer_board, score_board);
 
-            //create a random hit
+            //create a random hit, which was not used already
             Hit hit_c;
             while (true) {
             String[] Letters = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
@@ -138,8 +138,6 @@ public class PlayGame {
             //Computer shoots at player_board
             hit_c.computer_shoot(player_board, score_board);
 
-            //If a boat is hit in the computer's board, an X will appear in the position the bomb was thrown
-            //Otherwise, an O should be shown.
 
             player_board.display_player_board();
             System.out.println("\n");

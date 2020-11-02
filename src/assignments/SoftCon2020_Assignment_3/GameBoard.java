@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class GameBoard {
     private final Ship[][] board = new Ship[10][10];
-    private ArrayList<String> shots_taken;
+    private final ArrayList<String> shots_taken;
 
     GameBoard() {
         for (int x = 0; x < 10; x++) {

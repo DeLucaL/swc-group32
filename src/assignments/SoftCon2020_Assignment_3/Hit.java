@@ -3,7 +3,6 @@ package assignments.SoftCon2020_Assignment_3;
 public class Hit{
     private final int shot_x;
     private final int shot_y;
-    private final GameBoard b;
 
     //Constructor
     public Hit(String user_input, GameBoard game_board) {
@@ -12,7 +11,6 @@ public class Hit{
         char[] A = user_input.toCharArray();
         shot_x = (int) A[0] - 65;
         shot_y = A[1]- 48;
-        b = game_board;
     }
 
 
@@ -43,7 +41,6 @@ public class Hit{
         return false;
     }
 
-
     private static boolean isValidDigit(char c) {
         char[] validDigits = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
         for (char d : validDigits) {
@@ -51,16 +48,6 @@ public class Hit{
         }
         return false;
     }
-
-    /*public boolean isHitYet(char x, char y){
-        int x_coordinate = (int) x - 65;
-        int y_coordinate = y- 48;
-        Ship[][] gameBoard = b.getBoard();
-        if (gameBoard[y_coordinate][x_coordinate].getIsSunk()){
-            return true;
-        }
-        else {return gameBoard[y_coordinate][x_coordinate].getShipPart(y_coordinate,x_coordinate).getPartIsHit();}
-    }*/
 
     public void player_shoot(GameBoard board, ScoreBoard score_board){
         if(board.isOccupied(shot_y, shot_x)){
@@ -83,8 +70,8 @@ public class Hit{
             b[shot_y][shot_x].setHit(shot_y, shot_x);
             System.out.println("Miss");
         }
-
     }
+
     public void computer_shoot(GameBoard board, ScoreBoard score_board){
         if(board.isOccupied(shot_y, shot_x)){
             //hit

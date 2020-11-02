@@ -10,9 +10,9 @@ abstract class Ship implements Subject, Container { //additional Interface ShipS
     protected ArrayList<ShipPart> parts;
 
 
-    public class ShipPart {
-        private int x;
-        private int y;
+    public static class ShipPart {
+        private final int x;
+        private final int y;
         private boolean isHit;
 
         //Constructor
@@ -122,13 +122,13 @@ abstract class Ship implements Subject, Container { //additional Interface ShipS
         if (horizontal) {
             for (int i = 0; i < this.getSize(); i++) {
                 board.getBoard()[row][col + i] = this;
-                parts.add(new ShipPart(col+i, row));
+                parts.add(new ShipPart(col + i, row));
             }
         }
         else {
             for (int i = 0; i < this.getSize(); i++) {
                 board.getBoard()[row + i][col] = this;
-                parts.add(new ShipPart(col,row+i));
+                parts.add(new ShipPart(col, row + i));
             }
         }
     }
@@ -146,11 +146,7 @@ abstract class Ship implements Subject, Container { //additional Interface ShipS
 
         @Override
         public boolean hasNext() {
-
-            if(index < parts.size()) {
-                return true;
-            }
-            return false;
+            return index < parts.size();
         }
 
         @Override
