@@ -2,7 +2,7 @@ package assignments.SoftCon2020_Assignment_3;
 
 import java.util.ArrayList;
 
-abstract class Ship implements Subject, Container { //additional Interface ShipShip (implements Subject, ShipShip)
+abstract class Ship implements Subject, Container {
 
     private int bowRow;
     private int bowColumn;
