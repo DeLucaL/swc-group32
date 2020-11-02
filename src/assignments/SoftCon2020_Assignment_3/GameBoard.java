@@ -5,8 +5,6 @@ import java.util.ArrayList;
 
 public class GameBoard {
     private final Ship[][] board = new Ship[10][10];
-    private int position_x = 0;
-    private int position_y = 0;
     private ArrayList<String> shots_taken;
 
     GameBoard() {
@@ -22,6 +20,14 @@ public class GameBoard {
     // Getter
     public Ship[][] getBoard() {
         return board;
+    }
+
+    public ArrayList<String> getShots_taken() {
+        return shots_taken;
+    }
+
+    public void addShot(String coordinate) {
+        shots_taken.add(coordinate);
     }
 
     public void display_player_board() {

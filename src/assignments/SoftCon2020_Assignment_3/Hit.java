@@ -7,7 +7,7 @@ public class Hit{
 
     //Constructor
     public Hit(String user_input, GameBoard game_board) {
-        if (!isValidUserInput(user_input)) throw new IllegalArgumentException();
+        if (!isValidUserInput(user_input, game_board)) throw new IllegalArgumentException();
 
         char[] A = user_input.toCharArray();
         shot_x = (int) A[0] - 65;
@@ -26,10 +26,13 @@ public class Hit{
     }
 
     //Private - used in constructor
-    private boolean isValidUserInput(String s) {
+    private boolean isValidUserInput(String s, GameBoard board) {
         if (s.length() != 2) return false;
         char[] a = s.toCharArray();
-        return isValidLetter(a[0]) && isValidDigit(a[1]); //&&!isHitYet(a[0], a[1]);
+        if (isValidLetter(a[0]) && isValidDigit(a[1]) && !board.getShots_taken().contains(s)) {
+            board.addShot(s);
+            return true;
+        } else return false;
     }
 
     private static boolean isValidLetter(char c) {
@@ -64,10 +67,9 @@ public class Hit{
             //hit
 
             Ship[][] b = board.getBoard();
-            b[shot_y][shot_x].setHit(shot_y, shot_x); //sets also string to X, doesn't work yet
+            b[shot_y][shot_x].setHit(shot_y, shot_x);
             b[shot_y][shot_x].registerObserver(score_board);
             b[shot_y][shot_x].notifyComputerBoard();
-            //b[shot_y][shot_x].removeObserver(score_board); don't know yet if necessary
             if(b[shot_y][shot_x].getIsSunk()) {
                 System.out.println(" You destroyed a "+b[shot_y][shot_x].getType()+" ");
             }
@@ -87,11 +89,11 @@ public class Hit{
         if(board.isOccupied(shot_y, shot_x)){
             //hit
             Ship[][] b = board.getBoard();
+            b[shot_y][shot_x].setHit(shot_y, shot_x);
             b[shot_y][shot_x].registerObserver(score_board);
             b[shot_y][shot_x].notifyPlayerBoard();
-            b[shot_y][shot_x].setHit(shot_y, shot_x);
             if(b[shot_y][shot_x].getIsSunk()){
-                System.out.println("Your "+b[shot_y][shot_x].getType()+" was destroyed\" .");
+                System.out.println("Your "+b[shot_y][shot_x].getType()+" was destroyed. ");
             }
             else{System.out.println(" Your boat was hit! ");}
 

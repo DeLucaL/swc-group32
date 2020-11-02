@@ -132,7 +132,7 @@ public class PlayGame {
                 try {
                     hit_c = new Hit(random_input, player_board);
                     break;
-                } catch (IllegalArgumentException e) { }
+                } catch (IllegalArgumentException ignored) {}
             }
 
             //Computer shoots at player_board
