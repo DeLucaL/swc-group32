@@ -106,12 +106,12 @@ public class PlayGame {
         score_board.print();
 
 
-        while (!score_board.isGameOver){
+        while (!score_board.isGameOver()){
             System.out.println("Enter place to hit: ");
             Scanner scanner = new Scanner(System.in);
             Hit hit_p;
             try {
-                hit_p = new Hit(scanner.nextLine());
+                hit_p = new Hit(scanner.nextLine(), computer_board);
             }
             catch (IllegalArgumentException e) {
                 System.out.println("The specified input is invalid");
@@ -122,15 +122,21 @@ public class PlayGame {
             hit_p.player_shoot(computer_board, score_board);
 
             //create a random hit
+            Hit hit_c;
+            while (true) {
             String[] Letters = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
             Random random = new Random();
             int r1 = random.nextInt(10);
             int r2 = random.nextInt(10);
             String random_input = Letters[r1] +  r2;
-            Hit hit_c = new Hit(random_input);
+                try {
+                    hit_c = new Hit(random_input, player_board);
+                    break;
+                } catch (IllegalArgumentException e) { }
+            }
 
             //Computer shoots at player_board
-            hit_c.computer_shoot(player_board);
+            hit_c.computer_shoot(player_board, score_board);
 
             //If a boat is hit in the computer's board, an X will appear in the position the bomb was thrown
             //Otherwise, an O should be shown.
@@ -141,8 +147,8 @@ public class PlayGame {
             score_board.print();
 
         }
-        if (score_board.getRemaining_boats() >0){System.out.println(" Sorry, you lost! ");}
-        else{System.out.println("Congratulations, you won! ");}
+        if (score_board.getRemaining_boats() == 0){System.out.println(" Sorry, you lost!");}
+        else{System.out.println("Congratulations, you won!");}
 
     }
 }

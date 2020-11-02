@@ -20,15 +20,20 @@ public class ScoreBoard implements Observer{
         System.out.println("Your scoreboard:\n\t- Player remaining boats: "+remaining_boats+"\n\t- Enemy boats destroyed: "+destroyed_boats);
     }
 
-    public void update(boolean isSunk) {
+    public void update_computer_board(boolean isSunk) {
         if(isSunk) {
-            remaining_boats -= 1;
             destroyed_boats += 1;
         }
     }
 
+    public void update_player_board(boolean isSunk) {
+        if(isSunk) {
+            remaining_boats -= 1;
+        }
+    }
+
     public boolean isGameOver(){
-        if (destroyed_boats == 10 | remaining_boats == 0){
+        if (destroyed_boats == 10 || remaining_boats == 0){
             return true;
         }
         return false;

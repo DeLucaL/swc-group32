@@ -1,8 +1,13 @@
 package assignments.SoftCon2020_Assignment_3;
 
 
-public class GameBoard{
+import java.util.ArrayList;
+
+public class GameBoard {
     private final Ship[][] board = new Ship[10][10];
+    private int position_x = 0;
+    private int position_y = 0;
+    private ArrayList<String> shots_taken;
 
     GameBoard() {
         for (int x = 0; x < 10; x++) {
@@ -10,6 +15,7 @@ public class GameBoard{
                 board[y][x] = new Water();
             }
         }
+        shots_taken = new ArrayList<String>();
     }
 
 

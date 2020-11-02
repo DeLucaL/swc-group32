@@ -165,11 +165,7 @@ abstract class Ship implements Subject, Container { //additional Interface ShipS
 }
 
 class Carrier extends Ship  {
-    private ArrayList observers;
-
-    public Carrier() {
-        observers = new ArrayList();
-    }
+    private Observer observer;
 
     @Override
     public int getSize() {
@@ -189,30 +185,21 @@ class Carrier extends Ship  {
 
     @Override
     public void registerObserver(Observer o) {
-        observers.add(o);
+        observer = o;
     }
 
-    @Override
-    public void removeObserver(Observer o) {
-        int i = observers.indexOf(o); if (i >= 0) {
-            observers.remove(i);
-        }
-    }
 
-    public void notifyObservers() {
-        for (int i = 0; i < observers.size(); i++) {
-            Observer observer = (Observer)observers.get(i);
-            observer.update(this.getIsSunk());
-        }
+    public void notifyComputerBoard() {
+        observer.update_computer_board(this.getIsSunk());
+    }
+    public void notifyPlayerBoard() {
+        observer.update_player_board(this.getIsSunk());
     }
 }
 
 class Battleship extends Ship {
-    private ArrayList observers;
+    private Observer observer;
 
-    public Battleship() {
-        observers = new ArrayList();
-    }
     @Override
     public int getSize() {
         return 4;
@@ -230,30 +217,21 @@ class Battleship extends Ship {
 
     @Override
     public void registerObserver(Observer o) {
-        observers.add(o);
+        observer = o;
     }
 
-    @Override
-    public void removeObserver(Observer o) {
-        int i = observers.indexOf(o); if (i >= 0) {
-            observers.remove(i);
-        }
-    }
 
-    public void notifyObservers() {
-        for (int i = 0; i < observers.size(); i++) {
-            Observer observer = (Observer)observers.get(i);
-            observer.update(this.getIsSunk());
-        }
+    public void notifyComputerBoard() {
+        observer.update_computer_board(this.getIsSunk());
+    }
+    public void notifyPlayerBoard() {
+        observer.update_player_board(this.getIsSunk());
     }
 }
 
 class Submarine extends Ship {
-    private ArrayList observers;
+    private Observer observer;
 
-    public Submarine() {
-        observers = new ArrayList();
-    }
     @Override
     public int getSize() {
         return 3;
@@ -271,30 +249,21 @@ class Submarine extends Ship {
 
     @Override
     public void registerObserver(Observer o) {
-        observers.add(o);
+        observer = o;
     }
 
-    @Override
-    public void removeObserver(Observer o) {
-        int i = observers.indexOf(o); if (i >= 0) {
-            observers.remove(i);
-        }
-    }
 
-    public void notifyObservers() {
-        for (int i = 0; i < observers.size(); i++) {
-            Observer observer = (Observer)observers.get(i);
-            observer.update(this.getIsSunk());
-        }
+    public void notifyComputerBoard() {
+        observer.update_computer_board(this.getIsSunk());
+    }
+    public void notifyPlayerBoard() {
+        observer.update_player_board(this.getIsSunk());
     }
 }
 
 class PatrolBoat extends Ship {
-    private ArrayList observers;
+    private Observer observer;
 
-    public PatrolBoat() {
-        observers = new ArrayList();
-    }
     @Override
     public int getSize() {
         return 2;
@@ -312,30 +281,23 @@ class PatrolBoat extends Ship {
 
     @Override
     public void registerObserver(Observer o) {
-        observers.add(o);
+        observer = o;
     }
 
-    @Override
-    public void removeObserver(Observer o) {
-        int i = observers.indexOf(o); if (i >= 0) {
-            observers.remove(i);
-        }
-    }
 
-    public void notifyObservers() {
-        for (int i = 0; i < observers.size(); i++) {
-            Observer observer = (Observer)observers.get(i);
-            observer.update(this.getIsSunk());
-        }
+    public void notifyComputerBoard() {
+        observer.update_computer_board(this.getIsSunk());
+    }
+    public void notifyPlayerBoard() {
+        observer.update_player_board(this.getIsSunk());
     }
 }
 
 class Water extends Ship {
-    private ArrayList observers;
+    private Observer observer;
     private boolean isSunk;
 
     public Water() {
-        observers = new ArrayList();
         parts = new ArrayList<ShipPart>();
         parts.add(new ShipPart(this.getBowColumn(), this.getBowRow()));
         isSunk = false;
@@ -367,20 +329,14 @@ class Water extends Ship {
 
     @Override
     public void registerObserver(Observer o) {
-        observers.add(o);
+        observer = o;
     }
 
-    @Override
-    public void removeObserver(Observer o) {
-        int i = observers.indexOf(o); if (i >= 0) {
-            observers.remove(i);
-        }
-    }
 
-    public void notifyObservers() {
-        for (int i = 0; i < observers.size(); i++) {
-            Observer observer = (Observer)observers.get(i);
-            observer.update(false);
-        }
+    public void notifyComputerBoard() {
+        observer.update_computer_board(false);
+    }
+    public void notifyPlayerBoard() {
+        observer.update_player_board(false);
     }
 }
