@@ -59,7 +59,7 @@ public class PlayGame {
         }
 
         System.out.println("Your board is:\n");
-        player_board.display();
+        player_board.display_player_board();
         */
         //uncomment for testing purposes
         int i = 0;
@@ -89,17 +89,17 @@ public class PlayGame {
         }
 
         System.out.println("Your board is:\n");
-        player_board.display();
+        player_board.display_player_board();
 
 
         //third Assignment starts
         GameBoard computer_board = new GameBoard();
         System.out.println("\nThe opponent's board is:\n");
-        computer_board.display();
+        computer_board.display_player_board();
         computer_board = ComputerOcean.setComputerOcean();
 
         //uncomment for testing purposes:
-        //computer_board.display();
+        computer_board.display_player_board();
 
         System.out.print("\n");
         ScoreBoard score_board = ScoreBoard.getInstance();
@@ -135,9 +135,9 @@ public class PlayGame {
             //If a boat is hit in the computer's board, an X will appear in the position the bomb was thrown
             //Otherwise, an O should be shown.
 
-            player_board.display();
+            player_board.display_player_board();
             System.out.println("\n");
-            computer_board.display_hits();
+            computer_board.display_computer_board();
             score_board.print();
 
         }

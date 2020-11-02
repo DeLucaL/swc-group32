@@ -27,8 +27,7 @@ public class Hit{
     private static boolean isValidUserInput(String s) {
         if (s.length() != 2) return false;
         char[] a = s.toCharArray();
-        boolean validChars = isValidLetter(a[0]) && isValidDigit(a[1]);
-        return validChars;
+        return isValidLetter(a[0]) && isValidDigit(a[1]);
     }
 
     private static boolean isValidLetter(char c) {
@@ -51,17 +50,21 @@ public class Hit{
         if(board.isOccupied(shot_y, shot_x)){
             //hit
             Ship[][] b = board.getBoard();
-            b[shot_y][shot_x].setHit(); //sets also string to X, doesn't work yet
+            b[shot_y][shot_x].setHit(shot_y, shot_x); //sets also string to X, doesn't work yet
             b[shot_y][shot_x].registerObserver(score_board);
             b[shot_y][shot_x].notifyObservers();
             //b[shot_y][shot_x].removeObserver(score_board); don't know yet if necessary
-            System.out.println(" You hit a boat! ");
-            // If whole boat got destroyed " You destroyed a [boat name] "
+            if(b[shot_y][shot_x].getIsSunk()) {
+                System.out.println(" You destroyed a "+b[shot_y][shot_x].getType()+" ");
+            }
+            else {
+                System.out.println(" You hit a boat! ");
+            }
         }
         else{
             //miss
             Ship[][] b = board.getBoard();
-            b[shot_x][shot_y].setHit();
+            b[shot_y][shot_x].setHit(shot_y, shot_x);
             System.out.println("Miss");
         }
 
@@ -70,14 +73,14 @@ public class Hit{
         if(board.isOccupied(shot_y, shot_x)){
             //hit
             Ship[][] b = board.getBoard();
-            b[shot_y][shot_x].setHit(); //sets also string to X, doesn't work yet
+            b[shot_y][shot_x].setHit(shot_y, shot_x); //sets also string to X, doesn't work yet
             System.out.println(" Your boat was hit! ");
             // if whole boat was destroyed: " Your [boat name] was destroyed" .
         }
         else{
             //miss
             Ship[][] b = board.getBoard();
-            b[shot_x][shot_y].setHit();
+            b[shot_y][shot_x].setHit(shot_y, shot_x);
             System.out.println(" The computer missed ");
         }
 

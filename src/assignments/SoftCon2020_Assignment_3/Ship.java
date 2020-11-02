@@ -2,30 +2,46 @@ package assignments.SoftCon2020_Assignment_3;
 
 import java.util.ArrayList;
 
-abstract class Ship implements Subject { //additional Interface ShipShip (implements Subject, ShipShip)
+abstract class Ship implements Subject, Container { //additional Interface ShipShip (implements Subject, ShipShip)
 
     private int bowRow;
     private int bowColumn;
     private boolean horizontal;
-    private boolean isHit;
-    private boolean isSunk;
+    protected ArrayList<ShipPart> parts;
 
-    public String string;
+
+    public class ShipPart {
+        private int x;
+        private int y;
+        private boolean isHit;
+
+        //Constructor
+        ShipPart(int x_coordinate, int y_coordinate) {
+            x = x_coordinate;
+            y = y_coordinate;
+            isHit = false;
+        }
+
+        public boolean getPartIsHit() {
+            return isHit;
+        }
+
+        public void setPartIsHit() {
+            isHit = true;
+        }
+    }
 
     abstract int getSize();
     abstract String getType();
 
-    public String toString() {
-        return "[" + string + "]";
-    }
 
     //Getters
 
-    private int getBowRow() {
+    public int getBowRow() {
         return bowRow;
     }
 
-    private int getBowColumn() {
+    public int getBowColumn() {
         return bowColumn;
     }
 
@@ -33,13 +49,32 @@ abstract class Ship implements Subject { //additional Interface ShipShip (implem
         return horizontal;
     }
 
-    public boolean getIsSunk(){
-        return isSunk;
+    public ShipPart getShipPart(int row, int col) {
+        Iterator iter = new ShipIterator();
+        int i = 0;
+        while(iter.hasNext()) {
+            if(parts.get(i).x == col && parts.get(i).y == row) {
+                return parts.get(i);
+            }
+            i++;
+            iter.next();
+        }
+        return null;
     }
 
-    public boolean getIsHIt(){
-        return isHit;
+    public boolean getIsSunk(){
+        Iterator iter = new ShipIterator();
+        int i = 0;
+        while(iter.hasNext()) {
+            if(!this.parts.get(i).getPartIsHit()) {
+                return false;
+            }
+            i++;
+            iter.next();
+        }
+        return true;
     }
+
 
     //Setters
 
@@ -55,12 +90,8 @@ abstract class Ship implements Subject { //additional Interface ShipShip (implem
         this.horizontal = horizontal;
     }
 
-    public void setSunk(){
-        this.isSunk = true;
-    }
-
-    public void setHit(){
-        this.isHit = true;
+    public void setHit(int row, int col) {
+        this.getShipPart(row, col).setPartIsHit();
     }
 
 
@@ -86,16 +117,49 @@ abstract class Ship implements Subject { //additional Interface ShipShip (implem
         setHorizontal(horizontal);
         setBowRow(row);
         setBowColumn(col);
+        parts = new ArrayList<ShipPart>();
 
         if (horizontal) {
             for (int i = 0; i < this.getSize(); i++) {
                 board.getBoard()[row][col + i] = this;
+                parts.add(new ShipPart(col+i, row));
             }
         }
         else {
             for (int i = 0; i < this.getSize(); i++) {
                 board.getBoard()[row + i][col] = this;
+                parts.add(new ShipPart(col,row+i));
             }
+        }
+    }
+
+    //Iterator
+
+    @Override
+    public Iterator getIterator() {
+        return new ShipIterator();
+    }
+
+    private class ShipIterator implements Iterator {
+
+        int index;
+
+        @Override
+        public boolean hasNext() {
+
+            if(index < parts.size()) {
+                return true;
+            }
+            return false;
+        }
+
+        @Override
+        public Object next() {
+
+            if(this.hasNext()) {
+                return parts.get(index++);
+            }
+            return null;
         }
     }
 }
@@ -105,8 +169,8 @@ class Carrier extends Ship  {
 
     public Carrier() {
         observers = new ArrayList();
-        string = "C";
     }
+
     @Override
     public int getSize() {
         return 6;
@@ -119,7 +183,7 @@ class Carrier extends Ship  {
 
     @Override
     public String toString() {
-        return "["+string+"]";
+        return "[C]";
     }
 
 
@@ -138,7 +202,7 @@ class Carrier extends Ship  {
     public void notifyObservers() {
         for (int i = 0; i < observers.size(); i++) {
             Observer observer = (Observer)observers.get(i);
-            observer.update();
+            observer.update(this.getIsSunk());
         }
     }
 }
@@ -148,7 +212,6 @@ class Battleship extends Ship {
 
     public Battleship() {
         observers = new ArrayList();
-        string = "B";
     }
     @Override
     public int getSize() {
@@ -162,7 +225,7 @@ class Battleship extends Ship {
 
     @Override
     public String toString() {
-        return "["+string+"]";
+        return "[B]";
     }
 
     @Override
@@ -180,7 +243,7 @@ class Battleship extends Ship {
     public void notifyObservers() {
         for (int i = 0; i < observers.size(); i++) {
             Observer observer = (Observer)observers.get(i);
-            observer.update();
+            observer.update(this.getIsSunk());
         }
     }
 }
@@ -189,7 +252,6 @@ class Submarine extends Ship {
     private ArrayList observers;
 
     public Submarine() {
-        string = "S";
         observers = new ArrayList();
     }
     @Override
@@ -204,7 +266,7 @@ class Submarine extends Ship {
 
     @Override
     public String toString() {
-        return "["+string+"]";
+        return "[S]";
     }
 
     @Override
@@ -222,7 +284,7 @@ class Submarine extends Ship {
     public void notifyObservers() {
         for (int i = 0; i < observers.size(); i++) {
             Observer observer = (Observer)observers.get(i);
-            observer.update();
+            observer.update(this.getIsSunk());
         }
     }
 }
@@ -231,7 +293,6 @@ class PatrolBoat extends Ship {
     private ArrayList observers;
 
     public PatrolBoat() {
-        string = "P";
         observers = new ArrayList();
     }
     @Override
@@ -246,7 +307,7 @@ class PatrolBoat extends Ship {
 
     @Override
     public String toString() {
-        return "["+string+"]";
+        return "[P]";
     }
 
     @Override
@@ -264,17 +325,20 @@ class PatrolBoat extends Ship {
     public void notifyObservers() {
         for (int i = 0; i < observers.size(); i++) {
             Observer observer = (Observer)observers.get(i);
-            observer.update();
+            observer.update(this.getIsSunk());
         }
     }
 }
 
 class Water extends Ship {
     private ArrayList observers;
+    private boolean isSunk;
 
     public Water() {
-        string = " ";
         observers = new ArrayList();
+        parts = new ArrayList<ShipPart>();
+        parts.add(new ShipPart(this.getBowColumn(), this.getBowRow()));
+        isSunk = false;
     }
     @Override
     public int getSize() {
@@ -288,7 +352,17 @@ class Water extends Ship {
 
     @Override
     public String toString() {
-        return "["+string+"]";
+        return "[ ]";
+    }
+
+    @Override
+    public void setHit(int row, int col){
+        isSunk = true;
+    }
+
+    @Override
+    public boolean getIsSunk(){
+        return isSunk;
     }
 
     @Override
@@ -306,7 +380,7 @@ class Water extends Ship {
     public void notifyObservers() {
         for (int i = 0; i < observers.size(); i++) {
             Observer observer = (Observer)observers.get(i);
-            observer.update();
+            observer.update(false);
         }
     }
 }

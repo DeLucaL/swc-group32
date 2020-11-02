@@ -18,16 +18,23 @@ public class GameBoard{
         return board;
     }
 
-    public void display() {
+    public void display_player_board() {
         System.out.println("   |[A][B][C][D][E][F][G][H][I][J]\n---|------------------------------");
-        print(board);
-    }
-
-    private static void print(Ship[][] board) {
         for (int i = 0; i < board.length; i++) {
-            System.out.print("["+i+"]|");
+            System.out.print("[" + i + "]|");
             for (int j = 0; j < board[i].length; j++) {
-                System.out.print(board[i][j]);
+                if(board[i][j].getType().equals("Water")) {
+                    if(board[i][j].getIsSunk()) {
+                        System.out.print("[O]");
+                    }
+                        else {
+                            System.out.print("[ ]");
+                        }
+                } else if (board[i][j].getShipPart(i, j).getPartIsHit()) {
+                    System.out.print("[X]");
+                } else {
+                    System.out.print(board[i][j]);
+                }
             }
             System.out.println();
         }
@@ -37,21 +44,28 @@ public class GameBoard{
         return !board[row][col].getType().equals("Water");
     }
 
-    public void display_hits(){
+    public void display_computer_board(){
         System.out.println("   |[A][B][C][D][E][F][G][H][I][J]\n---|------------------------------");
         for (int i = 0; i < board.length; i++) {
             System.out.print("["+i+"]|");
             for (int j = 0; j < board[i].length; j++) {
-                if (board[i][j].getIsHIt() && board[i][j].toString().equals("[ ]")){
-                    System.out.print("[O]");
-                } else if (board[i][j].getIsHIt()){
+                if(board[i][j].getType().equals("Water")) {
+                    if(board[i][j].getIsSunk()) {
+                        System.out.print("[O]");
+                    }
+                    else {
+                        System.out.print("[ ]");
+                    }
+                } else if (board[i][j].getIsSunk()) {
+                    System.out.print(board[i][j]);
+                } else if (board[i][j].getShipPart(i, j).getPartIsHit()){
                     System.out.print("[X]");
                 }
                 else {System.out.print("[ ]");}
             }
             System.out.println();
-
-    }}
+        }
+    }
 
 }
 
