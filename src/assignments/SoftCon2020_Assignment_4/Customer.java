@@ -1,21 +1,52 @@
 package assignments.SoftCon2020_Assignment_4;
 
-public abstract class Customer {
+public class Customer {
     String name;
     String surname;
     int age;
-    int bank_account_number;
-    int savings;
+    int ID;
+    private int savings;
+    private int limit;
+    private CustomerLevel level;
 
     //Constructor
     public Customer(String name, String surname, int ID, int age) {
         this.name = name;
         this.surname = surname;
         this.age = age;
-        this.bank_account_number = ID;
+        this.ID = ID;
+        this.limit = 2000;
+        this.level = new RegularLevel();
         savings=0;
     }
 
+    //Getters
+    public int getID() {
+        return ID;
+    }
+
+    public String getLevel() {
+        return level.toString();
+    }
+
+    //Setters
+    public void setLevel(CustomerLevel level) {
+        this.level = level;
+    }
+
+    public void setLimit(int limit) {
+        this.limit = limit;
+    }
+
+    public void previousLevel() {
+        level.prev(this);
+    }
+
+    public void nextLevel() {
+        level.next(this);
+    }
+
+    //Payments
     public void deposit(int money){
         this.savings += money;
     }
@@ -36,51 +67,9 @@ public abstract class Customer {
         else{System.out.println("Not enough money");}
     }
 
-    abstract public void paying_by_credit_card(int money);
-}
-
-
-class RegularCustomer extends Customer{
-    int limit = 2000;
-
-    //Constructor
-    public RegularCustomer(String name, String surname, int ID, int age){
-        super(name, surname, ID, age);
-    }
-    @Override
     public void paying_by_credit_card(int money){
         if (money <= limit){
-            savings-=money;
-        }
-        else{System.out.println("Not enough money");}
-    }
-}
-
-class GoldenCustomer extends Customer{
-    int limit = 5000;
-
-    public GoldenCustomer(String name, String surname, int ID, int age){
-        super(name, surname, ID, age);
-    }
-    @Override
-    public void paying_by_credit_card(int money) {
-        if (money <= limit){
-            savings-=money;
-        }
-        else{System.out.println("Not enough money");}
-    }
-}
-
-class PlatinumCustomer extends Customer{
-    int limit = 10000;
-
-    public PlatinumCustomer(String name, String surname, int ID, int age){
-        super(name, surname, ID, age);
-    }
-    @Override
-    public void paying_by_credit_card(int money) {
-        if (money <= limit){
-            savings-=money;
+            savings -= money;
         }
         else{System.out.println("Not enough money");}
     }
