@@ -8,6 +8,7 @@ public class Customer {
     private int savings;
     private int limit;
     private CustomerLevel level;
+    private CreditCard creditCard;
 
     //Constructor
     public Customer(String name, String surname, int ID, int age) {
@@ -18,6 +19,7 @@ public class Customer {
         this.limit = 2000;
         this.level = new RegularLevel();
         savings=0;
+        creditCard = setCreditCard();
     }
 
     //Getters
@@ -27,6 +29,14 @@ public class Customer {
 
     public String getLevel() {
         return level.toString();
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public String getSurname(){
+        return surname;
     }
 
     //Setters
@@ -44,6 +54,19 @@ public class Customer {
 
     public void nextLevel() {
         level.next(this);
+    }
+
+    public CreditCard setCreditCard(){
+        if (level.toString().equals("Golden Customer")){
+            return new GoldCard(this);
+        }
+        else if (level.toString().equals("Platinum Customer")){
+            return new PlatinumCard(this);
+        }
+        else if (level.toString().equals("Regular Customer")){
+            return new RegularCard(this);
+        }
+        return null;
     }
 
     //Payments
@@ -71,6 +94,6 @@ public class Customer {
         if (money <= limit){
             savings -= money;
         }
-        else{System.out.println("Not enough money");}
+        else{System.out.println("exceeds limit");}
     }
 }
