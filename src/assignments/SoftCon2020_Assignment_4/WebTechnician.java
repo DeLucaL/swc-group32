@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 public class WebTechnician extends Customer {
     public WebTechnician(String name, String surname, int ID, int age) {
-        super(name, surname, ID, age);
+        super(name, surname, age);
     }
 
     public void fix_website() throws InterruptedException {

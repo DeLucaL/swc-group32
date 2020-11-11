@@ -11,15 +11,15 @@ public class Customer {
     private CreditCard creditCard;
 
     //Constructor
-    public Customer(String name, String surname, int ID, int age) {
+    public Customer(String name, String surname, int age) {
         this.name = name;
         this.surname = surname;
         this.age = age;
-        this.ID = ID;
         this.limit = 2000;
         this.level = new RegularLevel();
         savings=0;
         creditCard = setCreditCard();
+        setID();
     }
 
     //Getters
@@ -39,9 +39,15 @@ public class Customer {
         return surname;
     }
 
+    public int getSavings(){ return savings; }
+
     //Setters
     public void setLevel(CustomerLevel level) {
         this.level = level;
+    }
+
+    private void setID(){
+        ID =  creditCard.getSerialNumber()+123%9999;
     }
 
     public void setLimit(int limit) {

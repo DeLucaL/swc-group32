@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public abstract class Employee extends Customer {
     protected ArrayList<Customer> customers = new ArrayList<Customer>();
 
-    protected Employee(String name, String surname, int ID, int age) {
-        super(name, surname, ID, age);
+    protected Employee(String name, String surname, int age) {
+        super(name, surname, age);
     }
 
     public void add_customer(Customer c) {
@@ -20,7 +20,7 @@ public abstract class Employee extends Customer {
 class RegularEmployee extends Employee {
 
     public RegularEmployee(String name, String surname, int ID, int age) {
-        super(name, surname, ID, age);
+        super(name, surname, age);
     }
 
     @Override
@@ -34,12 +34,15 @@ class RegularEmployee extends Employee {
 
     @Override
     public void downgrade_user(int id) {}
+
+
 }
 
 class SectionChief extends Employee {
+    String city;
 
     public SectionChief(String name, String surname, int ID, int age) {
-        super(name, surname, ID, age);
+        super(name, surname, age);
     }
 
     @Override
@@ -59,12 +62,17 @@ class SectionChief extends Employee {
             }
         }
     }
+
+    void setCity(String city){
+        city = city;
+    }
+
+
 }
 
 class MainChief extends Employee {
-
-    public MainChief(String name, String surname, int ID, int age) {
-        super(name, surname, ID, age);
+    public MainChief(String name, String surname, int age) {
+        super(name, surname, age);
     }
 
     @Override
@@ -75,6 +83,7 @@ class MainChief extends Employee {
             }
         }
     }
+
 
     @Override
     void downgrade_user(int id) {

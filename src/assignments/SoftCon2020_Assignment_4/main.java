@@ -7,7 +7,9 @@ import java.util.Date;
 
 public class main {
     public static void main(String[] args){
-        Customer c = new Customer("Meier", "Sabine", 122, 40);
+        Customer c = new Customer("Meier", "Sabine", 40);
+        int ID = c.getID();
+        System.out.println(ID);
         c.deposit(400);
 
         Employee e = new RegularEmployee("Hauser", "Frank", 123, 50);
@@ -19,5 +21,3 @@ public class main {
     }
 }
 
-//TODO: if customer is upgraded, does he get a new card with new numbers?
-//TODO: unit-testing
