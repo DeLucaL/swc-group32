@@ -54,6 +54,7 @@ public class Customer {
 
     public void nextLevel() {
         level.next(this);
+        creditCard = setCreditCard();
     }
 
     public CreditCard setCreditCard(){

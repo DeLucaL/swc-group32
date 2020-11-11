@@ -38,9 +38,14 @@ public abstract class CreditCard {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.YEAR, 3);
         Date threeYears = cal.getTime();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String strDate = dateFormat.format(threeYears);
         return strDate;
+    }
+
+    //getters
+    public int getSerialNumber(){
+        return serial_number;
     }
 }
 
