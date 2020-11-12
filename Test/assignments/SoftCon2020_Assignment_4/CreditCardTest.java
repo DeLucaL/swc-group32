@@ -15,9 +15,4 @@ class CreditCardTest {
         assertNotEquals(a, b);
     }
 
-    @Test
-    void setExpirationDate() {
-        //TODO: write test for this
-    }
-
 }
