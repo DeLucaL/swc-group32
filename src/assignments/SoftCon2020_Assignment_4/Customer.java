@@ -1,10 +1,10 @@
 package assignments.SoftCon2020_Assignment_4;
 
 public class Customer {
-    String name;
-    String surname;
+    final String name;
+    final String surname;
     int age;
-    int ID;
+    private final int ID;
     private int savings;
     private int limit;
     private CustomerLevel level;
@@ -17,9 +17,9 @@ public class Customer {
         this.age = age;
         this.limit = 2000;
         this.level = new RegularLevel();
-        savings=0;
-        creditCard = setCreditCard();
-        setID();
+        this.savings=0;
+        this.creditCard = setCreditCard();
+        this.ID = createUniqueID();
     }
 
     //Getters
@@ -46,10 +46,6 @@ public class Customer {
         this.level = level;
     }
 
-    private void setID(){
-        ID =  creditCard.getSerialNumber()+123%9999;
-    }
-
     public void setLimit(int limit) {
         this.limit = limit;
     }
@@ -74,6 +70,11 @@ public class Customer {
             return new RegularCard(this);
         }
         return null;
+    }
+
+    //Utils
+    private int createUniqueID(){
+        return  creditCard.getSerialNumber()+123%9999;
     }
 
     //Payments

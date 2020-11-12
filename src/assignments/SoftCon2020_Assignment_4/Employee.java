@@ -10,6 +10,10 @@ public abstract class Employee extends Customer {
         super(name, surname, age);
     }
 
+    public Employee getSupervisor() {
+        return supervisor;
+    }
+
     public void add_customer(Customer c) {
         this.customers.add(c);
         this.supervisor.add_customer(c);
