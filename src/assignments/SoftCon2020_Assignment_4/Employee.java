@@ -2,7 +2,7 @@ package assignments.SoftCon2020_Assignment_4;
 
 import java.util.ArrayList;
 
-public abstract class Employee extends Person{
+public abstract class Employee extends Customer {
     protected ArrayList<Customer> customers;
     protected Employee supervisor;
 
