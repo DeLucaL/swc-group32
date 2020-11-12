@@ -2,7 +2,8 @@ package assignments.SoftCon2020_Assignment_4;
 
 import java.util.concurrent.TimeUnit;
 
-public class WebTechnician extends Customer {
+public class WebTechnician extends Person {
+
     public WebTechnician(String name, String surname, int age) {
         super(name, surname, age);
     }
