@@ -21,7 +21,7 @@ class BackendTechnicianTest {
         int ID = bt.getID();
         bt.fix_backend(ID);
 
-        String expectedOutput  = "fixed!\r\n";
+        String expectedOutput  = "fixed!\n";
 
         // Do the actual assertion.
         assertEquals(expectedOutput, outContent.toString());

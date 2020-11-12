@@ -12,7 +12,7 @@ public class main {
         System.out.println(ID);
         c.deposit(400);
 
-        Employee e = new RegularEmployee("Hauser", "Frank", 123, 50);
+        Employee e = new MainChief("Hauser", "Frank", 123);
         e.add_customer(c);
         e.upgrade_user(122);
         String lc = c.getLevel();
