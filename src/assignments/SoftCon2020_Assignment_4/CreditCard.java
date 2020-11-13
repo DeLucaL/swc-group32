@@ -23,7 +23,11 @@ public abstract class CreditCard {
 
     }
 
-    //creates a five digit serial number that hasn't been used before
+    /***
+     * creates a five digit serial number that hasn't been used before
+     * @param
+     * @return void
+     */
     public int createSerialNumber() {
         serial_number = 10000 + new Random().nextInt(90000);
         while (serial_numbers.contains(serial_number)) {
@@ -33,7 +37,11 @@ public abstract class CreditCard {
         return serial_number;
     }
 
-    //sets ExpirationDate to three years from now
+    /***
+     * sets ExpirationDate to three years from now
+     * @return ExpirationDate of Creditcard
+     */
+
     public String setExpirationDate(){
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.YEAR, 3);

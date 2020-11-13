@@ -1,7 +1,17 @@
 package assignments.SoftCon2020_Assignment_4;
 
 public interface CustomerLevel {
+    /***
+     * upgrades customer to next level
+     * @param c Customer
+     * @return void
+     */
     void next(Customer c);
+    /***
+     * downgrades customer to previous level
+     * @param c Customer
+     * @return void
+     */
     void prev(Customer c);
 }
 
@@ -16,6 +26,11 @@ class RegularLevel implements CustomerLevel {
     @Override
     public void prev(Customer c) {}
 
+    /***
+     * overrides toString() method with according level
+     * @param
+     * @return level of customer
+     */
     @Override
     public String toString() {
         return "Regular Customer";
