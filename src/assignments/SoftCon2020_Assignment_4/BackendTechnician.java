@@ -6,7 +6,7 @@ public class BackendTechnician extends Customer {
     }
 
     public void fix_backend(int id){
-        if(this.getID() == id) System.out.println("fixed!");
+        if(this.getID() == id) System.out.print("fixed!");
         else System.out.println("I think you confused me with somebody else...");
     }
 }
