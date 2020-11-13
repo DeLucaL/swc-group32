@@ -1,5 +1,6 @@
 package assignments.SoftCon2020_Assignment_4;
 
+import main.Main;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;

@@ -88,7 +88,7 @@ class SectionChief extends Employee {
 }
 
 class MainChief extends Employee {
-    private ArrayList<String> cities;
+    private ArrayList<String> cities = new ArrayList<>();
 
     public MainChief(String name, String surname, int age) {
         super(name, surname, age);
