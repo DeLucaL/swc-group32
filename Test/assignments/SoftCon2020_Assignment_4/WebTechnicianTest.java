@@ -21,7 +21,7 @@ class WebTechnicianTest {
         int ID = wt.getID();
         wt.fix_website();
 
-        String expectedOutput  = "reparations complete";
+        String expectedOutput  = "reparations complete\n";
 
         // Do the actual assertion.
         assertEquals(expectedOutput, outContent.toString());

@@ -10,6 +10,6 @@ public class WebTechnician extends Customer {
 
     public void fix_website() throws InterruptedException {
         TimeUnit.SECONDS.sleep(30);
-        System.out.print("reparations complete");
+        System.out.println("reparations complete");
     }
 }
