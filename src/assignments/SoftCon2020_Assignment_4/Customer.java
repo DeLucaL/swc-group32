@@ -10,7 +10,12 @@ public class Customer {
     private CustomerLevel level;
     private CreditCard creditCard;
 
-    //Constructor
+    /***
+     * Constructor
+     * @param name of customer
+     * @param surname of customer
+     * @param age of customer
+     */
     public Customer(String name, String surname, int age) {
         this.name = name;
         this.surname = surname;
@@ -59,6 +64,10 @@ public class Customer {
         creditCard = setCreditCard();
     }
 
+    /***
+     * creates CreditCard according to level of customer
+     * @return CreditCard of level of the person
+     */
     public CreditCard setCreditCard(){
         if (level.toString().equals("Golden Customer")){
             return new GoldCard(this);
@@ -72,16 +81,28 @@ public class Customer {
         return null;
     }
 
-    //Utils
+    /***
+     * with the help of a hash function it creates an unique ID from the serial number
+     * @return unique ID
+     */
     private int createUniqueID(){
         return  creditCard.getSerialNumber()+123%9999;
     }
 
-    //Payments
+    /***
+     * deposit the money, add to savings
+     * @param money to deposit
+     * @return void
+     */
     public void deposit(int money){
         this.savings += money;
     }
 
+    /***
+     * deposit the money, add to savings
+     * @param money to withdraw
+     * @return money which was withdrawn
+     */
     public int withdraw(int money){
         if (savings-money >= 0){
             savings -= money;
@@ -91,6 +112,11 @@ public class Customer {
         return 0;
     }
 
+    /***
+     * takes money from savings if enough money is available
+     * @param money to pay
+     * @return void
+     */
     public void paying_with_bank_transfer(int money){
         if (savings-money >= 0){
             savings -= money;
@@ -98,6 +124,11 @@ public class Customer {
         else{System.out.println("Not enough money");}
     }
 
+    /***
+     * takes amount of money from savings if it less than the limit
+     * @param money to pay
+     * @return void
+     */
     public void paying_by_credit_card(int money){
         if (money <= limit){
             savings -= money;

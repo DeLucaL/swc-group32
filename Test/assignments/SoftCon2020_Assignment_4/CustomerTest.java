@@ -4,6 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerTest {
 
+    /***
+     * This methods set a customer to his previous level.
+     * @param
+     * @return void
+     */
     @org.junit.jupiter.api.Test
     void previousLevel() {
         Customer c = new Customer("Meier", "Laura", 30);
@@ -17,6 +22,11 @@ class CustomerTest {
         assertEquals(expected, actual);
     }
 
+    /***
+     * This methods set a customer to his next level.
+     * @param
+     * @return void
+     */
     @org.junit.jupiter.api.Test
     void nextLevel() {
         Customer c = new Customer("Meier", "Laura", 30);
@@ -29,6 +39,11 @@ class CustomerTest {
         assertEquals(expected, actual);
     }
 
+    /***
+     * This methods set a customer to his next level.
+     * @param
+     * @return void
+     */
     @org.junit.jupiter.api.Test
     void deposit() {
         Customer c = new Customer("Meier", "Laura", 30);
@@ -37,7 +52,11 @@ class CustomerTest {
         int actual = c.getSavings();
         assertEquals(expected, actual);
     }
-
+    /***
+     * This methods set a customer to his next level.
+     * it takes as a parameter int money
+     * it returns
+     */
     @org.junit.jupiter.api.Test
     void withdraw1() {
         Customer c = new Customer("Meier", "Laura", 30);

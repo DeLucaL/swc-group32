@@ -8,8 +8,13 @@ public class WebTechnician extends Customer {
         super(name, surname, age);
     }
 
+    /***
+     * This method throws an Interrupted Exception were one has to wait for 30 seconds
+     * before it prints that the reparations are complete
+     * @throws InterruptedException
+     */
     public void fix_website() throws InterruptedException {
         TimeUnit.SECONDS.sleep(30);
-        System.out.println("reparations complete");
+        System.out.print("reparations complete");
     }
 }
