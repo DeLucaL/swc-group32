@@ -16,17 +16,18 @@ public class EmployeeTest {
         assertEquals(s, r.getSupervisor());
     }
     @Test
-    void testValidUpgrade_user_RE(int id) {
+    void testValidUpgrade_user_RE() {
         r.add_customer(c);
         r.upgrade_user(ID);
-        assertEquals("Golden Customer", c.getLevel().toString());
+        assertEquals("Golden Customer", c.getLevel());
     }
 
     @Test
-    void testInvalidUpgrade_user_RE(int id) {
+    void testInvalidUpgrade_user_RE() {
+        r.add_customer(c);
         r.upgrade_user(ID);
         r.upgrade_user(ID);
-        assertEquals("Golden Customer", c.getLevel().toString());
+        assertEquals("Golden Customer", c.getLevel());
     }
 
     //Test Section Chief
@@ -35,55 +36,60 @@ public class EmployeeTest {
         assertEquals(m, s.getSupervisor());
     }
     @Test
-    void testValidUpgrade_user_SC_1(int id) {
+    void testValidUpgrade_user_SC_1() {
+        s.add_customer(c);
         s.upgrade_user(ID);
-        assertEquals("Golden Customer", c.getLevel().toString());
+        assertEquals("Golden Customer", c.getLevel());
     }
     @Test
-    void testValidUpgrade_user_SC_2(int id) {
+    void testValidUpgrade_user_SC_2() {
+        s.add_customer(c);
         s.upgrade_user(ID);
         s.upgrade_user(ID);
-        assertEquals("Platinum Customer", c.getLevel().toString());
+        assertEquals("Platinum Customer", c.getLevel());
     }
     @Test
-    void testValidDowngrade_user_SC(int id) {
+    void testValidDowngrade_user_SC() {
         s.add_customer(c);
         s.upgrade_user(ID);
         s.downgrade_user(ID);
-        assertEquals("Regular Customer", c.getLevel().toString());
+        assertEquals("Regular Customer", c.getLevel());
     }
     @Test
-    void testInvalidDowngrade_user_SC(int id) {
+    void testInvalidDowngrade_user_SC() {
+        s.add_customer(c);
         s.upgrade_user(ID);
         s.upgrade_user(ID);
         s.downgrade_user(ID);
-        assertEquals("Platinum Customer", c.getLevel().toString());
+        assertEquals("Platinum Customer", c.getLevel());
     }
 
     //Test Main Chief
     @Test
-    void testValidUpgrade_user_MC_1(int id) {
+    void testValidUpgrade_user_MC_1() {
+        m.add_customer(c);
         m.upgrade_user(ID);
-        assertEquals("Golden Customer", c.getLevel().toString());
+        assertEquals("Golden Customer", c.getLevel());
     }
     @Test
-    void testValidUpgrade_user_MC_2(int id) {
+    void testValidUpgrade_user_MC_2() {
+        m.add_customer(c);
         m.upgrade_user(ID);
         m.upgrade_user(ID);
-        assertEquals("Platinum Customer", c.getLevel().toString());
+        assertEquals("Platinum Customer", c.getLevel());
     }
     @Test
-    void testDowngrade_user_MC1(int id) {
+    void testDowngrade_user_MC1() {
         m.upgrade_user(ID);
         m.downgrade_user(ID);
-        assertEquals("Regular Customer", c.getLevel().toString());
+        assertEquals("Regular Customer", c.getLevel());
     }
     @Test
-    void testDowngrade_user_MC2(int id) {
+    void testDowngrade_user_MC2() {
         m.upgrade_user(ID);
         m.upgrade_user(ID);
         m.downgrade_user(ID);
         m.downgrade_user(ID);
-        assertEquals("Regular Customer", c.getLevel().toString());
+        assertEquals("Regular Customer", c.getLevel());
     }
 }
