@@ -1,8 +1,4 @@
-package assignments.SoftCon2020_Assignment_5.BakeriesChain;
-
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+package assignments.SoftCon2020_Assignment_5.Bakery_Chain;
 
 public class Main {
     public static void main(String[] args) {

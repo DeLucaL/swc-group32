@@ -1,4 +1,4 @@
-package assignments.SoftCon2020_Assignment_5.BakeriesChain;
+package assignments.SoftCon2020_Assignment_5.Bakery_Chain;
 
 public abstract class BakeryDecorator implements BakeryInterface{
     protected Bakery decoratedBakery;
