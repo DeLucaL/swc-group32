@@ -18,5 +18,26 @@ public class Main {
         CentralOffice.getCentralOffice().openNewBakery(b2);
 
         CentralOffice.getCentralOffice().printAllOffices();
+        System.out.println();
+
+        Cake c = new Cake();
+        c = new Strawberry(c);
+        c = new Chocolate(c);
+        c = new Cream(c);
+        c = new Strawberry(c);
+
+        Sandwich s = new Sandwich();
+        s = new Ham(s);
+        s = new Ham(s);
+        s = new Tomato(s);
+        s = new Cheese(s);
+
+        b1.buyCake(c);
+        b2.buyCake(c);
+        new SweetsBakery(new Bakery("Beck3", "str3", "8032", "ZH")).buyCake(c);
+
+        b1.buySandwich(s);
+        b2.buySandwich(s);
+        new SweetsBakery(new Bakery("Beck3", "str3", "8032", "ZH")).buySandwich(s);
     }
 }

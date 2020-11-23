@@ -3,7 +3,7 @@ package assignments.SoftCon2020_Assignment_5.Bakery_Chain;
 public abstract class BakeryDecorator implements BakeryInterface{
     protected Bakery decoratedBakery;
 
-    public BakeryDecorator(Bakery decoratedBakery) {
+    protected BakeryDecorator(Bakery decoratedBakery) {
         this.decoratedBakery = decoratedBakery;
     }
 
@@ -22,13 +22,13 @@ public abstract class BakeryDecorator implements BakeryInterface{
         return decoratedBakery.getCity();
     }
 
-    public void buySandwich(){
-        decoratedBakery.buySandwich();
+    public void buySandwich(Sandwich sandwich){
+        decoratedBakery.buySandwich(sandwich);
     }
 
 
-    public void buyCake() {
-        decoratedBakery.buyCake();
+    public void buyCake(Cake cake) {
+        decoratedBakery.buyCake(cake);
     }
 }
 
@@ -39,13 +39,13 @@ class SweetsBakery extends BakeryDecorator {
     }
 
     @Override
-    public void buySandwich() {
+    public void buySandwich(Sandwich sandwich) {
         System.out.println("Sorry, we do not sell sandwiches.");
     }
 
     @Override
-    public void buyCake() {
-        decoratedBakery.buyCake();
+    public void buyCake(Cake cake) {
+        decoratedBakery.buyCake(cake);
     }
 }
 
@@ -56,12 +56,12 @@ class BreadBakery extends BakeryDecorator {
     }
 
     @Override
-    public void buySandwich() {
-        super.buySandwich();
+    public void buySandwich(Sandwich sandwich) {
+        super.buySandwich(sandwich);
     }
 
     @Override
-    public void buyCake() {
+    public void buyCake(Cake cake) {
         System.out.println("Sorry, we do not sell cake.");
     }
 }

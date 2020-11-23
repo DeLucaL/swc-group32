@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 //Singleton
 public class CentralOffice extends BaseHub {
-    private static final CentralOffice hq = new CentralOffice("HQ", "Bahnhofstr. 1", "8001", "ZH");
+    private static final CentralOffice hq = new CentralOffice("HQ", "Bahnhofstr. 1", "8001", "Zürich");
     private ArrayList<CityOffice> cityOffices = new ArrayList<>();
 
     private CentralOffice(String name, String street, String postcode, String city) {
