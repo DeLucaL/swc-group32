@@ -9,11 +9,18 @@ public class CityOffice extends BaseHub {
         super("city office of " + city, street, postcode, city);
     }
 
-    void printAllBakeriesNames(){
+    @Override
+    public void printInfo(){
         for(BakeryInterface bakery : bakeries) {
-            System.out.printf("[%s]", bakery.getName());
+            System.out.print("[");
+            bakery.printInfo();
+            System.out.print("]");
             if(bakeries.indexOf(bakery) != bakeries.size()-1) System.out.print(", ");
         }
+    }
+
+    public void printAllBakeriesNames() {
+        this.printInfo();
     }
 
     public void addBakery(BakeryInterface b) {

@@ -8,27 +8,21 @@ public abstract class BakeryDecorator implements BakeryInterface{
     }
 
     @Override
-    public String getName() {
-        return decoratedBakery.getName();
-    }
-
-    @Override
-    public String getAddress() {
-        return decoratedBakery.getAddress();
-    }
-
-    @Override
-    public  String getCity(){
-        return decoratedBakery.getCity();
+    public void printInfo() {
+        decoratedBakery.printInfo();
     }
 
     public void buySandwich(Sandwich sandwich){
         decoratedBakery.buySandwich(sandwich);
     }
 
-
     public void buyCake(Cake cake) {
         decoratedBakery.buyCake(cake);
+    }
+
+    @Override
+    public  String getCity(){
+        return decoratedBakery.getCity();
     }
 }
 

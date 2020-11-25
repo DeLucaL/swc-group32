@@ -17,7 +17,7 @@ class Sandwich extends Product {
 
     @Override
     public double getPrice() {
-        //the price of basic sandwich not specified in the task description, set it to 5
+        //the price of a basic sandwich not specified in the task description, set it to 5
         return 5;
     }
 }

@@ -17,7 +17,7 @@ public class Main {
         );
         CentralOffice.getCentralOffice().openNewBakery(b2);
 
-        CentralOffice.getCentralOffice().printAllOffices();
+        CentralOffice.getCentralOffice().printInfo();
         System.out.println();
 
         Cake c = new Cake();

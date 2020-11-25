@@ -15,15 +15,28 @@ public class CentralOffice extends BaseHub {
         return hq;
     }
 
+    @Override
+    public void printInfo(){
+        for(CityOffice office : cityOffices) {
+            System.out.printf("[%s], ", office.name);
+            office.printInfo();
+            if(cityOffices.indexOf(office) != cityOffices.size()-1) System.out.print(", ");
+        }
+    }
+
+    public void printAllOffices() {
+        this.printInfo();
+    }
+
     public void openNewCityOffice(CityOffice office) {
-        for(CityOffice o : cityOffices) assert (!o.getCity().equals(office.getCity()));
+        for(CityOffice o : cityOffices) assert (!o.city.equals(office.city));
         cityOffices.add(office);
     }
     
     public void openNewBakery(BakeryInterface bakery) {
         int idx = -1;
         for (CityOffice o : cityOffices) {
-            if (o.getCity().equals(bakery.getCity())) {
+            if (o.city.equals(bakery.getCity())) {
                 o.addBakery(bakery);
                 idx = cityOffices.indexOf(o);
                 break;
@@ -31,15 +44,5 @@ public class CentralOffice extends BaseHub {
         }
         assert (idx != -1);
     }
-
-    public void printAllOffices(){
-        for(CityOffice office : cityOffices) {
-            System.out.printf("[%s], ", office.getName());
-            office.printAllBakeriesNames();
-            if(cityOffices.indexOf(office) != cityOffices.size()-1) System.out.print(", ");
-        }
-    }
-
-
 }
 
