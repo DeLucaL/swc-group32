@@ -12,7 +12,7 @@ public class Customer {
      * "[name of the car] + [bags allowed] + [speed] + [price]".
      */
     public void ride(){
-        System.out.println(
+        System.out.print(
                 vehicle.getCarType() +"; "
                 +vehicle.LuggageSpace()+"; "
                 + vehicle.Speed()+" speed; "
