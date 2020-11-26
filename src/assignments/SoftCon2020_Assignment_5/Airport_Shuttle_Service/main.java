@@ -6,9 +6,11 @@ public class main {
         Vehicle micro_car = new MicroCar();
         Vehicle super_car = new SuperCar();
         Vehicle bus = new Bus();
-        Customer c = new Customer(super_car);
-        Customer c2 = new Customer(bus);
-        c.ride();
-        c2.ride();
+        ShuttleOffice shuttleOffice = ShuttleOffice.getInstance();
+        ShuttleOffice.Customer c = shuttleOffice.createCustomer(family_car, "07/03/2020");
+        shuttleOffice.rideCustomer(c);
+        ShuttleOffice.Customer c2 = shuttleOffice.createCustomer(micro_car, "45655");
+        shuttleOffice.rideCustomer(c2);
+
     }
 }
