@@ -17,8 +17,15 @@ public class Main {
         );
         CentralOffice.getCentralOffice().openNewBakery(b2);
 
+        System.out.println("Central Office info:");
         CentralOffice.getCentralOffice().printInfo();
-        System.out.println();
+        System.out.println("");
+        System.out.println("City Office info:");
+        c1.printInfo();
+        System.out.println("");
+        System.out.println("Bakery info:");
+        b1.printInfo();
+        System.out.println("");
 
         Cake c = new Cake();
         c = new Strawberry(c);

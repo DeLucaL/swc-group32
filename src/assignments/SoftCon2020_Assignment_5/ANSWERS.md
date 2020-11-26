@@ -3,7 +3,9 @@
 
 Exercise 1, Part 2 <br />
 
-Classes CentralOffice, CityOffice and Bakery and the interface Hub together build the Composite pattern. Component Hub declares the interface for the composites CentralOffice and CityOffice and leaf Bakery. All override the method printInfo()  
+Classes CentralOffice, CityOffice and Bakery and the interface Hub together build the Composite pattern. Component Hub declares the interface for the composites CentralOffice and CityOffice and leaf Bakery. All override the method printInfo().  
+The Decorator Pattern is implemented by the bakeries. A bakery can be decorated by a SweetBakery and / or a Breadbakery. 
+Also a Sandwich can be decorated with different fillings and a cake can be decorated with different toppings. 
 
 Exercise 2, Part 2 <br /> 
 
