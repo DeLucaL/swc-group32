@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.text.ParseException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -101,4 +102,42 @@ class ShuttleOfficeTest {
         // Do the actual assertion.
         assertEquals(expectedOutput, outContent.toString().trim());
     }
+
+    @Test
+    void rideNonExistingCustomer(){
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        // After this all System.out.println() statements will come to outContent stream.
+
+        Vehicle bus = new Bus();
+        ShuttleOffice s = ShuttleOffice.getInstance();
+        ShuttleOffice.Customer c = null;
+        try {
+            s.rideCustomer(c);
+        } catch (NullPointerException e) {
+            //expected exception
+        }
+
+        String expectedOutput = "There is no such customer";
+        assertEquals(expectedOutput, outContent.toString().trim());
+    }
+
+    /*@Test
+    void createInvalidCustomer(){
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        // After this all System.out.println() statements will come to outContent stream.
+
+        Vehicle bus = new Bus();
+        ShuttleOffice s = ShuttleOffice.getInstance();
+        ShuttleOffice.Customer c = null;
+        try {
+            s.createCustomer(bus, "07/03/2020");
+        } catch (ParseException e) {
+            //expected exception
+        }
+
+        String expectedOutput = "There is no such customer";
+        assertEquals(expectedOutput, outContent.toString().trim());
+    }*/
 }
