@@ -27,14 +27,15 @@ class CustomerTest {
         assertEquals(expectedOutput, outContent.toString());
 
     }
+    @Test
     void rideMicroCar() {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
         // After this all System.out.println() statements will come to outContent stream.
 
         // So, you can normally call,
-        Vehicle family_car = new FamilyCar();
-        Customer c = new Customer(family_car);
+        Vehicle micro_car = new MicroCar();
+        Customer c = new Customer(micro_car);
         c.ride();
 
         String expectedOutput  = "Micro car; one bag; normal speed; 12 CHF/h";
@@ -43,14 +44,16 @@ class CustomerTest {
         assertEquals(expectedOutput, outContent.toString());
 
     }
+
+    @Test
     void rideSuperCar() {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
         // After this all System.out.println() statements will come to outContent stream.
 
         // So, you can normally call,
-        Vehicle family_car = new FamilyCar();
-        Customer c = new Customer(family_car);
+        Vehicle super_car = new SuperCar();
+        Customer c = new Customer(super_car);
         c.ride();
 
         String expectedOutput  = "Super car; two small and two large bags; fast speed; 30 CHF/h";
@@ -59,21 +62,22 @@ class CustomerTest {
         assertEquals(expectedOutput, outContent.toString());
 
     }
+
+    @Test
     void rideBus() {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
         // After this all System.out.println() statements will come to outContent stream.
 
         // So, you can normally call,
-        Vehicle family_car = new FamilyCar();
-        Customer c = new Customer(family_car);
+        Vehicle bus = new Bus();
+        Customer c = new Customer(bus);
         c.ride();
 
-        String expectedOutput  = "Bus; no luggage restrictions; slow speed; 5 CHF/h\n";
+        String expectedOutput  = "Bus; no luggage restrictions; slow speed; 5 CHF/h";
 
         // Do the actual assertion.
         assertEquals(expectedOutput, outContent.toString());
-
     }
 
 }
