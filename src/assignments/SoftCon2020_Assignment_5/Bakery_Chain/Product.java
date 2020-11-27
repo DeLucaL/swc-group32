@@ -1,12 +1,20 @@
 package assignments.SoftCon2020_Assignment_5.Bakery_Chain;
 
 public abstract class Product {
-    String description;
 
+    String description;
+    /***
+     * this method returns the description of the product
+     * @return description
+     */
     public String getDescription() {
         return this.description;
     }
 
+    /***
+     * this method returns the price of the product
+     * @return price
+     */
     public abstract double getPrice();
 }
 

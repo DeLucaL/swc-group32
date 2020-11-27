@@ -10,11 +10,19 @@ public class CentralOffice extends BaseHub {
     private CentralOffice(String name, String street, String postcode, String city) {
         super(name, street, postcode, city);
     }
+    //getter
 
+    /***
+     * this method returns the CentralOffice
+     * @return hq
+     */
     public static CentralOffice getCentralOffice(){
         return hq;
     }
 
+    /***
+     * this method prints the CityOffices and its bakeries
+     */
     @Override
     public void printInfo(){
         for(CityOffice office : cityOffices) {
@@ -28,11 +36,19 @@ public class CentralOffice extends BaseHub {
         this.printInfo();
     }
 
+    /***
+     * this method opens a new CityOffice, if there isn't any Office in this city yet
+     * @param office
+     */
     public void openNewCityOffice(CityOffice office) {
         for(CityOffice o : cityOffices) assert (!o.city.equals(office.city));
         cityOffices.add(office);
     }
-    
+
+    /***
+     * this method opens a new bakery, if there is a CityOffice in the city
+     * @param bakery
+     */
     public void openNewBakery(BakeryInterface bakery) {
         int idx = -1;
         for (CityOffice o : cityOffices) {

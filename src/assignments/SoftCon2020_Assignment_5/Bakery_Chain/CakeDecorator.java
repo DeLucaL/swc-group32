@@ -3,11 +3,24 @@ package assignments.SoftCon2020_Assignment_5.Bakery_Chain;
 public abstract class CakeDecorator extends Cake {
     protected Cake decoratedCake;
 
+    /***
+     * this method sets the actual cake
+     * @param decoratedCake
+     */
     protected CakeDecorator(Cake decoratedCake) {
         this.decoratedCake = decoratedCake;
     }
 
+    /***
+     * this method returns the description of the cake and adds the topping at the end
+     * @return description formatted Cake, [topping1], [topping2], ...
+     */
     public abstract String getDescription();
+
+    /***
+     * further classes extend the interface with a getPrice method, which returns the price of the cake with the added topping
+     * @return price of topping + momentary price of cake with possible previous added toppings
+     */
 }
 
 class Strawberry extends CakeDecorator {

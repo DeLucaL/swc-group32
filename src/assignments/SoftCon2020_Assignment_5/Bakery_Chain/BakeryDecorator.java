@@ -12,10 +12,18 @@ public abstract class BakeryDecorator implements BakeryInterface{
         decoratedBakery.printInfo();
     }
 
+    /***
+     * lets customer buy a sandwich only in BreadBakery, otherwise prints do not sell warning
+     * @param sandwich
+     */
     public void buySandwich(Sandwich sandwich){
         decoratedBakery.buySandwich(sandwich);
     }
 
+    /***
+     * lets customer buy a cake only in SweetsBakery, otherwise prints do not sell warning
+     * @param cake
+     */
     public void buyCake(Cake cake) {
         decoratedBakery.buyCake(cake);
     }

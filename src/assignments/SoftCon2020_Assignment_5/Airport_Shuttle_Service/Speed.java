@@ -2,6 +2,7 @@ package assignments.SoftCon2020_Assignment_5.Airport_Shuttle_Service;
 
 public interface Speed {
     /***
+     * this method returns the speed
      * @return the speed of the car
      */
     public String getSpeed();

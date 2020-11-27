@@ -9,6 +9,9 @@ public class CityOffice extends BaseHub {
         super("city office of " + city, street, postcode, city);
     }
 
+    /***
+     * this method print all the existing bakeries
+     */
     @Override
     public void printInfo(){
         for(BakeryInterface bakery : bakeries) {
@@ -23,6 +26,10 @@ public class CityOffice extends BaseHub {
         this.printInfo();
     }
 
+    /***
+     * this method adds the bakery to the ArrayList bakeries
+     * @param b
+     */
     public void addBakery(BakeryInterface b) {
         bakeries.add(b);
     }

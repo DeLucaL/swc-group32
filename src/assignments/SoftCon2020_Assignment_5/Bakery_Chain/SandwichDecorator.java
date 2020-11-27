@@ -3,11 +3,24 @@ package assignments.SoftCon2020_Assignment_5.Bakery_Chain;
 public abstract class SandwichDecorator extends Sandwich {
     protected Sandwich decoratedSandwich;
 
+    /***
+     * this method sets the actual sandwich
+     * @param decoratedSandwich
+     */
     protected SandwichDecorator(Sandwich decoratedSandwich) {
         this.decoratedSandwich = decoratedSandwich;
     }
 
+    /***
+     * this method returns the description of the fillings of a sandwich
+     * @return description
+     */
     public abstract String getDescription();
+
+    /***
+     * further classes extend the interface with a getPrice method, which returns the price of the sandwich with the added filling
+     * @return price of filling + momentary price of sandwich with possible previous added fillings
+     */
 }
 
 class Ham extends SandwichDecorator {
