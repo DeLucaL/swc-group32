@@ -10,10 +10,14 @@ import java.awt.event.ActionListener;
 public class View implements Observer {
 
     private final Controller controller;
-    private final Model model;
+    private final EmployeeModel model;
     JFrame viewFrame;
-    JPanel viewPanel;
-    JLabel bpmLabel;
+    JFrame viewFrameAddress;
+    JPanel panelAddress;
+    JPanel panel;
+    JLabel emptyLabel;
+    JLabel emptyLabelA;
+    JLabel printLabel;
     //name
     JLabel LabelName;
     JTextField EmployeeNameTextField;
@@ -21,12 +25,12 @@ public class View implements Observer {
     JLabel LabelSurname;
     JTextField EmployeeSurnameTextField;
     JButton createEmployeeButton;
-    JButton getAdreessButton;
+    JButton updateAdreessButton;
     JButton printEmployeeButton;
 
 
 
-    public View(Controller controller, Model model) {
+    public View(Controller controller, EmployeeModel model) {
         this.controller = controller;
         this.model = model;
         model.registerObserver(this);
@@ -34,25 +38,35 @@ public class View implements Observer {
     }
 
     public void createView() {
-        // Create all Swing components here
-        viewPanel = new JPanel(new GridLayout(1, 2));
-        viewFrame = new JFrame("View");
+        //Create Employee View
+        viewFrame = new JFrame("Create Employee");
         viewFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        viewFrame.setSize(new Dimension(100, 80));
-        JPanel panel = new JPanel(new GridLayout(6, 1));
+        viewFrame.setSize(new Dimension(1000, 800));
+        panel = new JPanel(new GridLayout(8, 2));
 
         //Employee Surname
-        LabelSurname = new JLabel("Enter employee surname:", SwingConstants.CENTER);
+        JLabel LabelSurname = new JLabel("Enter employee surname:", SwingConstants.CENTER);
         panel.add(LabelSurname);
-        EmployeeSurnameTextField = new JTextField();
-        panel.add(LabelSurname);
+        JTextField EmployeeSurnameTextField = new JTextField();
         panel.add(EmployeeSurnameTextField);
 
         //Employee Name
-        LabelName = new JLabel("Enter employee name:", SwingConstants.CENTER);
+        JLabel LabelName = new JLabel("Enter employee name:", SwingConstants.CENTER);
         panel.add(LabelName);
-        EmployeeNameTextField = new JTextField();
+        JTextField EmployeeNameTextField = new JTextField();
         panel.add(EmployeeNameTextField);
+
+        //Employee address
+        JLabel LabelAddress = new JLabel("Enter employee address:", SwingConstants.CENTER);
+        panel.add(LabelAddress);
+        JTextField AddressTextField = new JTextField();
+        panel.add(AddressTextField);
+
+        //Employee telephone number
+        JLabel LabelPhoneNumber = new JLabel("Enter employees phone number:", SwingConstants.CENTER);
+        panel.add(LabelPhoneNumber);
+        JTextField PhoneNumberTextField = new JTextField();
+        panel.add(PhoneNumberTextField);
 
         //create Employee
         createEmployeeButton = new JButton("Create Employee");
@@ -60,10 +74,16 @@ public class View implements Observer {
             public void actionPerformed(ActionEvent event) {
                 String name = EmployeeNameTextField.getText();
                 String surname = EmployeeSurnameTextField.getText();
-                controller.createEmployee(name, surname);
+                String address = AddressTextField.getText();
+                String number = PhoneNumberTextField.getText();
+                controller.createEmployee(surname, name, address, number);
             }
         });
         panel.add(createEmployeeButton);
+
+        //Empty label
+        emptyLabel = new JLabel("", SwingConstants.CENTER);
+        panel.add(emptyLabel);
 
         //Print Employee
         printEmployeeButton = new JButton("Print Empoyee");
@@ -74,17 +94,66 @@ public class View implements Observer {
         });
         panel.add(printEmployeeButton);
 
-        //Address
-        getAdreessButton = new JButton("Get address");
-        panel.add(getAdreessButton);
+        //Empty label
+        printLabel = new JLabel("", SwingConstants.CENTER);
+        panel.add(printLabel);
 
-        //add to panel
-        viewPanel.add(panel);
-        viewFrame.getContentPane().add(viewPanel, BorderLayout.CENTER);
+
+        //ADDRESS VIEW
+
+        //Address View
+        viewFrameAddress = new JFrame("Update Address");
+        viewFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        viewFrame.setSize(new Dimension(1000, 800));
+        panelAddress = new JPanel(new GridLayout(8, 2));
+
+        //ID
+        JLabel LabelID = new JLabel("Enter employee ID:", SwingConstants.CENTER);
+        panelAddress.add(LabelID);
+        JTextField IDTextField = new JTextField();
+        panelAddress.add(IDTextField);
+
+        //UpdateAddress
+        updateAdreessButton = new JButton("Update address");
+        updateAdreessButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                //update address of employee
+                boolean couldUpdate = controller.updateAddress(IDTextField.getText());
+                updateAdressLabel(couldUpdate);
+            }
+        });
+        panelAddress.add(updateAdreessButton);
+
+        //Empty label
+        emptyLabelA = new JLabel("", SwingConstants.CENTER);
+        panelAddress.add(emptyLabelA);
+
+        //add panel to frame
+        viewFrame.getContentPane().add(panel, BorderLayout.CENTER);
+        viewFrameAddress.getContentPane().add(panelAddress, BorderLayout.CENTER);
 
         //show
         viewFrame.pack();
         viewFrame.setVisible(true);
+        viewFrameAddress.pack();
+        viewFrameAddress.setVisible(true);
+    }
+    public void updatePrintLabel(String str){
+        printLabel = new JLabel(str, SwingConstants.CENTER);
+        panel.add(printLabel);
+        System.out.println(str);
+        viewFrame.pack();
+        viewFrame.setVisible(true);
+    }
+
+    public void updateAdressLabel(boolean bool){
+        if (bool){
+            emptyLabelA = new JLabel("successfully updated", SwingConstants.CENTER);
+        }
+        else{emptyLabelA = new JLabel("successfully updated", SwingConstants.CENTER);}
+        panelAddress.add(emptyLabelA);
+        viewFrameAddress.pack();
+        viewFrameAddress.setVisible(true);
     }
 
     @Override

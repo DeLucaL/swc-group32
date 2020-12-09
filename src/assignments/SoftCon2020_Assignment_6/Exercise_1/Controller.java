@@ -3,11 +3,11 @@ package assignments.SoftCon2020_Assignment_6.Exercise_1;
 import assignments.SoftCon2020_Assignment_6.Exercise_1.ObserverPattern.Observer;
 
 public class Controller implements Observer {
-    Model model;
+    EmployeeModel model;
     View view;
     Employee lastCreatedEmployee;
 
-    public Controller(Model model) {
+    public Controller(EmployeeModel model) {
         this.model = model;
         view = new View(this, model);
         view.createView();
@@ -15,18 +15,21 @@ public class Controller implements Observer {
         //view.disableStopMenuItem();
         //view.disableStartMenuItem();
     }
+
+    public boolean updateAddress(String ID){
+        return model.updateAddress(ID);
+    }
     @Override
     public void update() {
 
     }
 
-    public void createEmployee(String name, String surname) {
+    public void createEmployee(String surname, String name, String address, String number) {
         //create a new Employee
-        System.out.println("created new Employee "+ surname +" " + name);
-        lastCreatedEmployee = new Employee(surname, name);
+        model.createEmployee(surname, name, address, number);
     }
 
     public void printEmployee() {
-        lastCreatedEmployee.printEmployee();
+        view.updatePrintLabel(model.printEmployee());
     }
 }
