@@ -4,6 +4,12 @@ import assignments.SoftCon2020_Assignment_6.Exercise_1.ObserverPattern.Observer;
 import assignments.SoftCon2020_Assignment_6.Exercise_1.ObserverPattern.Subject;
 
 public class Model implements Subject {
+    Thread thread;
+
+    public Model() {
+        thread = new Thread(String.valueOf(this));
+        thread.start();
+    }
     @Override
     public void registerObserver(Observer o) {
         observers.add(o);
