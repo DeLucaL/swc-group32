@@ -68,7 +68,7 @@ public class View implements Observer {
         JTextField PhoneNumberTextField = new JTextField();
         panel.add(PhoneNumberTextField);
 
-        //create Employee
+        //create Employee TODO: create only if surname, name, adress and number are not empty
         createEmployeeButton = new JButton("Create Employee");
         createEmployeeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
@@ -85,7 +85,7 @@ public class View implements Observer {
         emptyLabel = new JLabel("", SwingConstants.CENTER);
         panel.add(emptyLabel);
 
-        //Print Employee
+        //Print Employee TODO:Only print if there was a employee created
         printEmployeeButton = new JButton("Print Empoyee");
         printEmployeeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
