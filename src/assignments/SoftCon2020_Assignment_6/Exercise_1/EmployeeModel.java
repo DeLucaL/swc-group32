@@ -14,16 +14,34 @@ public class EmployeeModel implements Subject {
         System.out.println("Created new Employee: " + surname + " " +name);
     }
 
-    public String printEmployee(){
-        Employee e = employees.get(employees.size() - 1);
-        return e.surname + e.name + e.ID;
+    public String printEmployee() {
+        if (employees.size() >= 1) {
+            Employee e = employees.get(employees.size() - 1);
+            return e.surname + " " + e.name + " " + e.ID;
+        }
+        else{
+            return "You have to create an employee first";}
     }
 
-    public boolean updateAddress(String address){ //TODO: update Address if employee exists in ArrayList employees and notify observers, else return false
-        //if employee exist update
-        return true;
-        //else return false
-        //notify
+    public void modelUpdateAddress(String ID, String address){
+        //if employee exists update
+        boolean employeeExists = false;
+        for (Employee e: employees){
+            if (e.getID().equals(ID)){
+                e.setNewAddress(address);
+                employeeExists = true;
+                }
+            }
+        notifyObserver(employeeExists);
+    }
+
+    public String modelGetAddress(String ID){
+        for (Employee e: employees){
+            if (e.getID().equals(ID)) {
+                return e.getAddress();
+            }
+        }
+        return "No such employee found";
     }
 
     @Override
@@ -38,10 +56,10 @@ public class EmployeeModel implements Subject {
     }
 
     @Override
-    public void notifyObserver() {
+    public void notifyObserver(boolean bool) {
         for (int i = 0; i < observers.size(); i++) {
             Observer observer = (Observer)observers.get(i);
-            observer.update();
+            observer.update(bool);
         }
     }
 }

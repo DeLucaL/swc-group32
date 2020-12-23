@@ -26,4 +26,18 @@ public class Employee {
     public void printEmployee(){ //TODO: print all Infos
         System.out.println(surname+name+ID);
     }
+
+    //getters
+    public String getID(){
+        return ID;
+    }
+
+    public String getAddress(){
+        return address;
+    }
+
+    //setters
+    public void setNewAddress(String newAddress){
+        address = newAddress;
+    }
 }

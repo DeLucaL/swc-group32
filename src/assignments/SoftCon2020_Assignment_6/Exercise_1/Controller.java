@@ -16,11 +16,12 @@ public class Controller implements Observer {
         //view.disableStartMenuItem();
     }
 
-    public boolean updateAddress(String ID){
-        return model.updateAddress(ID);
+    public void ifEmployeeExistsUpdate(String ID, String address){
+        model.modelUpdateAddress(ID, address);
     }
+
     @Override
-    public void update() {
+    public void update(boolean bool) {
 
     }
 
@@ -31,5 +32,9 @@ public class Controller implements Observer {
 
     public void printEmployee() {
         view.updatePrintLabel(model.printEmployee());
+    }
+
+    public String getAddress(String ID){
+        return model.modelGetAddress(ID);
     }
 }

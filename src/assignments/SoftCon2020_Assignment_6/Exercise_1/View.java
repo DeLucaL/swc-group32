@@ -18,6 +18,9 @@ public class View implements Observer {
     JLabel emptyLabel;
     JLabel emptyLabelA;
     JLabel printLabel;
+    JTextField newAdressTextField;
+    JTextField IDTextField;
+    JLabel newAdressFeedbackLabel;
     //name
     JLabel LabelName;
     JTextField EmployeeNameTextField;
@@ -68,7 +71,7 @@ public class View implements Observer {
         JTextField PhoneNumberTextField = new JTextField();
         panel.add(PhoneNumberTextField);
 
-        //create Employee TODO: create only if surname, name, adress and number are not empty
+        //create Employee
         createEmployeeButton = new JButton("Create Employee");
         createEmployeeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
@@ -76,7 +79,9 @@ public class View implements Observer {
                 String surname = EmployeeSurnameTextField.getText();
                 String address = AddressTextField.getText();
                 String number = PhoneNumberTextField.getText();
-                controller.createEmployee(surname, name, address, number);
+                if (!name.equals("") && !surname.equals("") && !address.equals("")  && !number.equals(""))
+                {controller.createEmployee(surname, name, address, number);}
+                else {System.out.println("All fields must not be empty");}
             }
         });
         panel.add(createEmployeeButton);
@@ -85,7 +90,7 @@ public class View implements Observer {
         emptyLabel = new JLabel("", SwingConstants.CENTER);
         panel.add(emptyLabel);
 
-        //Print Employee TODO:Only print if there was a employee created
+        //Print Employee
         printEmployeeButton = new JButton("Print Empoyee");
         printEmployeeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
@@ -110,23 +115,36 @@ public class View implements Observer {
         //ID
         JLabel LabelID = new JLabel("Enter employee ID:", SwingConstants.CENTER);
         panelAddress.add(LabelID);
-        JTextField IDTextField = new JTextField();
+        IDTextField = new JTextField();
         panelAddress.add(IDTextField);
+
+        //New Address
+        JLabel newAdressLabel = new JLabel("Enter new Address:", SwingConstants.CENTER);
+        panelAddress.add(newAdressLabel);
+        newAdressTextField = new JTextField();
+        panelAddress.add(newAdressTextField);
+
 
         //UpdateAddress
         updateAdreessButton = new JButton("Update address");
         updateAdreessButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //update address of employee
-                boolean couldUpdate = controller.updateAddress(IDTextField.getText());
-                updateAdressLabel(couldUpdate);
+                controller.ifEmployeeExistsUpdate(IDTextField.getText(), newAdressTextField.getText());
             }
         });
         panelAddress.add(updateAdreessButton);
 
+        //New Address Feedback Label
+        newAdressFeedbackLabel = new JLabel("", SwingConstants.CENTER);
+        panelAddress.add(newAdressFeedbackLabel);
+
         //Empty label
         emptyLabelA = new JLabel("", SwingConstants.CENTER);
         panelAddress.add(emptyLabelA);
+
+        //Print label
+        printLabel = new JLabel("", SwingConstants.CENTER);
 
         //add panel to frame
         viewFrame.getContentPane().add(panel, BorderLayout.CENTER);
@@ -139,25 +157,22 @@ public class View implements Observer {
         viewFrameAddress.setVisible(true);
     }
     public void updatePrintLabel(String str){
-        printLabel = new JLabel(str, SwingConstants.CENTER);
+        printLabel.setText(str);
         panel.add(printLabel);
         System.out.println(str);
         viewFrame.pack();
         viewFrame.setVisible(true);
     }
 
-    public void updateAdressLabel(boolean bool){
-        if (bool){
-            emptyLabelA = new JLabel("successfully updated", SwingConstants.CENTER);
+    public void updateAddressLabel(boolean bool){
+        if (bool) {
+            newAdressFeedbackLabel.setText("Successfully updated");
         }
-        else{emptyLabelA = new JLabel("successfully updated", SwingConstants.CENTER);}
-        panelAddress.add(emptyLabelA);
-        viewFrameAddress.pack();
-        viewFrameAddress.setVisible(true);
+        else {newAdressFeedbackLabel.setText("Employee not found");}
     }
 
     @Override
-    public void update() {
-
+    public void update(boolean bool) {
+        updateAddressLabel(bool);
     }
 }
