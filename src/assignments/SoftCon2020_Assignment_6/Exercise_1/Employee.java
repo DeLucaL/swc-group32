@@ -1,5 +1,7 @@
 package assignments.SoftCon2020_Assignment_6.Exercise_1;
 
+import java.util.Random;
+
 public class Employee {
     String name;
     String surname;
@@ -18,12 +20,18 @@ public class Employee {
     /***
      * @return a sequence of 8 characters or numbers
      */
-    private String createID(){ //TODO: make ID unique
-        //example
-        return "1dslie45";
+    private String createID(){
+        Random r = new Random();
+        String str = "";
+        for (int i = 0; i < 4; i++) {
+            str += String.valueOf(r.nextInt(10));
+            str += (char)(r.nextInt(26) + 'a');
+        }
+        return str;
+
     }
 
-    public void printEmployee(){ //TODO: print all Infos
+    public void printEmployee(){
         System.out.println(surname+name+ID);
     }
 
